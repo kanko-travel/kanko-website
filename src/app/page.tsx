@@ -5,6 +5,7 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
 import { FeaturesHoteliers } from '@/components/FeaturesHoteliers'
+import { FeaturesTravelAgents } from '@/components/FeaturesTravelAgents'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 import LogoCloud from '@/components/LogoCloud'
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <FeaturesHoteliers />
+        {/* <FeaturesTravelAgents /> */}
         <LogoCloud />
         {/* <SecondaryFeatures /> */}
         {/* <CallToAction />

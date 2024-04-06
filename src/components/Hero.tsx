@@ -14,10 +14,9 @@ export function Hero() {
     <div className="flex h-screen items-center py-24">
       <Container className="text-center">
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-          A Travel Marketplace for{' '}
-          <span className="text-blue-700">Hoteliers</span>
+          The Marketplace for <span className="text-blue-700">Hoteliers</span>
           {' and '}
-          <span className="text-green-700">Travel Agencies</span>
+          <span className="text-green-700">Travel Agents</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
           Kanko connects Maldives travel services with global agents directly,
