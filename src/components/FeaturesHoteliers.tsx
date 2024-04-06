@@ -15,7 +15,7 @@ import logoEzee from '@/images/logos/ezee.png'
 
 import animationGlobe from '@/lotties/globe.json'
 import animationCm from '@/lotties/connection.json'
-import animationSettlement from '@/lotties/settlement.json'
+import animationTransfer from '@/lotties/transfer.json'
 
 const lottieOptions = (animationData: any) => ({
   loop: true,
@@ -69,7 +69,7 @@ const features = [
     description:
       'Have payments wired straight to your account in your local currency, with real-time settlements per booking.',
     image: screenshotVatReturns,
-    animationData: animationSettlement,
+    animationData: animationTransfer,
   },
 ]
 
