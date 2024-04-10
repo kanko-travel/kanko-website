@@ -7,7 +7,7 @@ import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
+import { Favicon } from '@/components/Favicon'
 import { NavLink } from '@/components/NavLink'
 
 function MobileNavLink({
@@ -104,7 +104,7 @@ export function Header() {
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
             <Link href="#" aria-label="Home">
-              <Logo className="h-8 w-auto" />
+              <Favicon className="h-8 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
               <NavLink href="#hoteliers">Hoteliers</NavLink>

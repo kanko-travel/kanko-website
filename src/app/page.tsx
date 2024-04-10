@@ -13,11 +13,11 @@ import LogoCloud from '@/components/LogoCloud'
 export default function Home() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main>
         <Hero />
         <FeaturesHoteliers />
-        {/* <FeaturesTravelAgents /> */}
+        <FeaturesTravelAgents />
         <LogoCloud />
         {/* <SecondaryFeatures /> */}
         {/* <CallToAction />
