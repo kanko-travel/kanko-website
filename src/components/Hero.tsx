@@ -18,8 +18,9 @@ export function Hero() {
           <LogoAnimated className="h-8 w-auto sm:h-16" />
         </div>
         <h1 className="mx-auto max-w-5xl font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-          The Marketplace for <span className="text-blue-700">Hoteliers</span>
-          {' and '}
+          The Platform Connecting{' '}
+          <span className="text-blue-700">Hoteliers</span>
+          {' with '}
           <span className="text-green-700">Travel Agents</span>
         </h1>
         <p className="mx-auto mt-6 hidden max-w-2xl text-lg tracking-tight text-slate-700 sm:block sm:text-xl">

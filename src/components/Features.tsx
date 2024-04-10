@@ -56,10 +56,10 @@ export function Features({
                     <div
                       key={feature.title}
                       className={clsx(
-                        'group relative rounded-full px-4 py-1 ring-1 ring-inset',
+                        'group relative rounded-full px-4 py-1 ring-1 ring-inset ring-white',
                         selectedIndex === featureIndex
-                          ? 'bg-white ring-white'
-                          : 'ring-white hover:bg-slate-400 hover:ring-slate-400',
+                          ? 'bg-white'
+                          : 'hover:ring-slate-800',
                       )}
                     >
                       <h3>
@@ -68,7 +68,7 @@ export function Features({
                             'font-display text-sm ui-not-focus-visible:outline-none lg:text-lg',
                             selectedIndex === featureIndex
                               ? 'text-slate-800'
-                              : 'text-white hover:text-white',
+                              : 'text-white hover:text-slate-800',
                           )}
                         >
                           <span className="absolute inset-0 rounded-full" />
