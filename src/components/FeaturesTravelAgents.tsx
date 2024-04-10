@@ -37,7 +37,7 @@ export function FeaturesTravelAgents() {
       title={title}
       subtitle={subtitle}
       features={features}
-      bgColour="bg-green-400"
+      bgColour="bg-green-500"
     />
   )
 }
