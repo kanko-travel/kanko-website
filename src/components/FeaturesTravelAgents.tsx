@@ -15,7 +15,7 @@ import logoEzee from '@/images/logos/ezee.png'
 
 import animationGlobe from '@/lotties/globe.json'
 import animationCm from '@/lotties/connection.json'
-import animationTransfer from '@/lotties/transfer.json'
+import animationTransfer from '@/lotties/wire.json'
 
 const lottieOptions = (animationData: any) => ({
   loop: true,
