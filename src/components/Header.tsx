@@ -104,18 +104,17 @@ export function Header() {
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
             <Link href="#" aria-label="Home">
-              <Logo className="h-12 w-auto" />
+              <Logo className="h-8 w-auto" />
             </Link>
-            {/* <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#features">Features</NavLink>
-              <NavLink href="#testimonials">Testimonials</NavLink>
-              <NavLink href="#pricing">Pricing</NavLink>
-            </div> */}
+            <div className="hidden md:flex md:gap-x-6">
+              <NavLink href="#hoteliers">Hoteliers</NavLink>
+              <NavLink href="#travel-agents">Travel Agents</NavLink>
+            </div>
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
               <NavLink href="/login">Sign in</NavLink>
-            </div>
+            </div> */}
             <Button href="/register" color="blue">
               <span>
                 Get started <span className="hidden lg:inline">today</span>

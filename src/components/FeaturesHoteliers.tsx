@@ -15,7 +15,7 @@ import logoEzee from '@/images/logos/ezee.png'
 
 import animationGlobe from '@/lotties/globe.json'
 import animationCm from '@/lotties/connection.json'
-import animationTransfer from '@/lotties/transfer.json'
+import animationTransfer from '@/lotties/wire.json'
 
 const lottieOptions = (animationData: any) => ({
   loop: true,
@@ -37,20 +37,36 @@ const features = [
     title: 'Synchronized Inventory',
     description: () => (
       <>
-        <p>
-          Kanko integrates with all the major channel managers, allowing
-          real-time synchronization of availability and rates between Kanko and
-          your PMS.
-        </p>
-        <div className="mt-auto grid grid-cols-3 gap-4">
-          {logos.map(({ name, logo }) => (
-            <div
-              key={name}
-              className="relative flex h-[75px] w-full items-center justify-center rounded-xl bg-white p-4 ring-1 ring-inset ring-slate-200 sm:h-[95px] sm:p-8"
-            >
-              <Image src={logo} alt={name} height={32} unoptimized />
-            </div>
-          ))}
+        <div className="mb-12">
+          <p>
+            Kanko integrates with all the major channel managers, allowing
+            real-time synchronization of availability and rates between Kanko
+            and your PMS.
+          </p>
+        </div>
+
+        <div className="mt-auto">
+          <div className="">
+            <span className="text-xs font-semibold tracking-tight sm:text-sm">
+              We currently support the following channel managers out of the
+              box, with more on the way
+            </span>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {logos.map(({ name, logo }) => (
+              <div
+                key={name}
+                className="relative flex h-[75px] w-full items-center justify-center rounded-xl bg-white p-4 ring-1 ring-inset ring-slate-200 sm:h-[95px] sm:p-8"
+              >
+                <Image
+                  src={logo}
+                  alt={name}
+                  height={name === 'Ezee' ? 48 : 32}
+                  unoptimized
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </>
     ),
@@ -58,7 +74,7 @@ const features = [
     animationData: animationCm,
   },
   {
-    title: 'Global Exposure',
+    title: 'Global Reach',
     description:
       'Kanko partners with over 500 travel agencies in 125 countries. By listing your inventory on Kanko you have access to all of them.',
     image: screenshotPayroll,
@@ -78,20 +94,12 @@ export function FeaturesHoteliers() {
     <section
       id="features"
       aria-label="Features for running your books"
-      className="relative overflow-hidden bg-blue-600 py-24"
+      className="relative overflow-hidden bg-blue-500 py-24"
     >
-      {/* <Image
-        className="absolute left-1/2 top-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
-        src={backgroundImage}
-        alt=""
-        width={2245}
-        height={1636}
-        unoptimized
-      /> */}
       <Container className="relative">
         <div className="max-w-2xl">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Kanko for Hoteliers
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-slate-800 sm:text-4xl md:text-5xl">
+            Kanko for <span className="text-white">Hoteliers</span>
           </h2>
           <p className="mt-3 text-xl tracking-tight text-blue-50">
             Everything you need to sell inventory directly to travel agencies
@@ -103,23 +111,23 @@ export function FeaturesHoteliers() {
           vertical={false}
         >
           {({ selectedIndex }) => (
-            <div className="rounded-2xl bg-white px-24 py-12">
+            <div className="rounded-2xl bg-white px-12 py-8 xl:px-16 xl:py-12">
               <div className="flex">
-                <Tab.List className="relative z-10 flex gap-x-4 whitespace-nowrap">
+                <Tab.List className="relative z-10 flex gap-4 overflow-scroll whitespace-nowrap">
                   {features.map((feature, featureIndex) => (
                     <div
                       key={feature.title}
                       className={clsx(
                         'group relative rounded-full px-4 py-1 ring-1 ring-inset',
                         selectedIndex === featureIndex
-                          ? 'bg-blue-800 ring-blue-800'
+                          ? 'bg-blue-500 ring-blue-500'
                           : 'ring-slate-200 hover:bg-slate-400 hover:ring-slate-400',
                       )}
                     >
                       <h3>
                         <Tab
                           className={clsx(
-                            'font-display text-lg ui-not-focus-visible:outline-none',
+                            'font-display text-sm ui-not-focus-visible:outline-none lg:text-lg',
                             selectedIndex === featureIndex
                               ? 'text-white'
                               : 'text-slate-400 hover:text-white',
@@ -133,26 +141,26 @@ export function FeaturesHoteliers() {
                   ))}
                 </Tab.List>
               </div>
-              <Tab.Panels className="relative mt-12">
+              <Tab.Panels className="relative mt-6 sm:mt-8 lg:mt-12">
                 {features.map((feature) => (
                   <Tab.Panel key={feature.title} unmount={false}>
-                    <div className="relative h-96">
-                      <div className="flex h-full w-full items-center justify-end">
+                    <div className="relative sm:h-96">
+                      <div className="hidden h-full w-full items-center justify-end xl:flex">
                         <div
                           className="flex h-full items-center justify-end"
-                          style={{ width: '50%', height: 'auto' }}
+                          style={{ width: '40%', height: 'auto' }}
                         >
                           <Lottie
                             options={lottieOptions(feature.animationData)}
                           />
                         </div>
                       </div>
-                      <div className="absolute inset-0">
+                      <div className="relative h-full xl:absolute xl:inset-0">
                         <div className="flex h-full max-w-2xl flex-col">
-                          <h2 className="text-3xl text-slate-800">
+                          <h2 className="text-2xl font-semibold tracking-tight text-slate-800 lg:text-3xl">
                             {feature.title}
                           </h2>
-                          <div className="mt-4 flex grow flex-col text-xl text-slate-400">
+                          <div className="mt-4 flex grow flex-col text-base text-slate-400 lg:text-xl">
                             {typeof feature.description == 'string' ? (
                               <p className="">{feature.description}</p>
                             ) : (

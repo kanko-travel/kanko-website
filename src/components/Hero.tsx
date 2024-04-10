@@ -8,11 +8,15 @@ import logoStatamic from '@/images/logos/statamic.svg'
 import logoStaticKit from '@/images/logos/statickit.svg'
 import logoTransistor from '@/images/logos/transistor.svg'
 import logoTuple from '@/images/logos/tuple.svg'
+import { LogoAnimated } from './LogoAnimated'
 
 export function Hero() {
   return (
     <div className="flex h-screen items-center py-24">
       <Container className="text-center">
+        <div className="mb-8 flex justify-center">
+          <LogoAnimated className="h-16" />
+        </div>
         <h1 className="mx-auto max-w-5xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
           The Marketplace for <span className="text-blue-700">Hoteliers</span>
           {' and '}
@@ -23,8 +27,12 @@ export function Hero() {
           removing complexity and enhancing visibility.
         </p>
         <div className="mt-12 flex justify-center gap-x-6">
-          <Button href="/register">Get 6 months free</Button>
-          <Button
+          {/* <Button href="/register" color="blue">
+            <span>
+              Get started <span className="hidden lg:inline">today</span>
+            </span>
+          </Button> */}
+          {/* <Button
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             variant="outline"
           >
@@ -35,7 +43,7 @@ export function Hero() {
               <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z" />
             </svg>
             <span className="ml-3">Watch video</span>
-          </Button>
+          </Button> */}
         </div>
         {/* <div className="mt-36 lg:mt-44">
         <p className="font-display text-base text-slate-900">
