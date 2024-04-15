@@ -81,7 +81,8 @@ export function LogoAnimated(props: React.ComponentPropsWithoutRef<'svg'>) {
         }}
         variants={containerVariants}
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
+        // whileInView="visible"
       >
         <motion.path
           style={{

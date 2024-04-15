@@ -28,10 +28,10 @@ const features = [
 
         <div className="mt-auto">
           <div className="">
-            <span className="text-xs font-semibold tracking-tight sm:text-sm">
+            <p className="text-xs font-semibold tracking-tight sm:text-sm">
               We currently support the following channel managers out of the
               box, with more on the way
-            </span>
+            </p>
           </div>
           <div className="mt-4">
             <ChannelManagerShowcase />

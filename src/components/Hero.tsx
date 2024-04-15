@@ -8,14 +8,14 @@ import logoStatamic from '@/images/logos/statamic.svg'
 import logoStaticKit from '@/images/logos/statickit.svg'
 import logoTransistor from '@/images/logos/transistor.svg'
 import logoTuple from '@/images/logos/tuple.svg'
-import { LogoAnimated } from './LogoAnimated'
+import { Logo } from './Logo'
 
 export function Hero() {
   return (
-    <div className="flex h-screen items-center py-24">
+    <div className="flex h-screen items-center bg-white py-24">
       <Container className="text-center">
         <div className="mb-8 flex justify-center sm:mb-16">
-          <LogoAnimated className="h-8 w-auto sm:h-16" />
+          <Logo className="h-8 w-auto sm:h-16" />
         </div>
         <h1 className="mx-auto max-w-5xl font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
           The Platform Connecting{' '}
