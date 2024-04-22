@@ -11,6 +11,7 @@ import logoQuickbooks from '@/images/logos/quickbooks.svg'
 import logoXero from '@/images/logos/xero.svg'
 import sapLogo from '@/images/logos/sap.svg'
 import tripadvisorLogo from '@/images/logos/tripadvisor.svg'
+import wiseLogo from '@/images/logos/wise.svg'
 
 const logos = [
   { name: 'Cloudbeds', logo: logoCloudbeds },
@@ -21,6 +22,7 @@ const logos = [
   { name: 'Xero', logo: logoXero },
   { name: 'SAP', logo: sapLogo },
   { name: 'TripAdvisor', logo: tripadvisorLogo },
+  { name: 'Wise', logo: wiseLogo },
 ]
 
 export default function LogoCloud() {
