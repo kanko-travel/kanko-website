@@ -41,8 +41,16 @@ export function Footer() {
           <div className="flex flex-col items-end space-y-4">
             {/* <Logo className="h-12 w-auto" /> */}
             <p className="text-sm text-slate-500 sm:mt-0">
-              Copyright &copy; {new Date().getFullYear()} Kanko. All rights
-              reserved.
+              Copyright &copy; {new Date().getFullYear()} Kanko Travel Ltd. All
+              rights reserved.
+              <br />
+              Company Number{' '}
+              <a
+                className="text-blue-400"
+                href="https://find-and-update.company-information.service.gov.uk/company/15683379"
+              >
+                15683379
+              </a>
             </p>
           </div>
         </div>
