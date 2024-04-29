@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <FeaturesHoteliers />
-        <FeaturesTravelAgents />
+        {/* <FeaturesTravelAgents /> */}
         <LogoCloud />
         {/* <SecondaryFeatures /> */}
         {/* <CallToAction />
