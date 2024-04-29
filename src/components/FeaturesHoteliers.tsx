@@ -44,7 +44,7 @@ const features = [
   {
     title: 'Global Reach',
     description:
-      'Kanko partners with over 500 travel agencies in 125 countries. By listing your inventory on Kanko you have access to all of them.',
+      'Kanko partners with major travel agencies in the UK and European Union. By listing your inventory on Kanko you have access to all of them.',
     animationData: animationGlobe,
   },
   {
