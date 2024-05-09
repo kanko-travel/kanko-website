@@ -14,14 +14,14 @@ import tripadvisorLogo from '@/images/logos/tripadvisor.svg'
 import wiseLogo from '@/images/logos/wise.svg'
 
 const logos = [
-  { name: 'Cloudbeds', logo: logoCloudbeds },
-  { name: 'Myallocator', logo: logoMyallocator },
-  { name: 'Siteminder', logo: logoSiteminder },
-  { name: 'Ezee', logo: logoEzee },
+  // { name: 'Cloudbeds', logo: logoCloudbeds },
+  // { name: 'Myallocator', logo: logoMyallocator },
+  // { name: 'Siteminder', logo: logoSiteminder },
+  // { name: 'Ezee', logo: logoEzee },
   { name: 'Quickbooks', logo: logoQuickbooks },
   { name: 'Xero', logo: logoXero },
   { name: 'SAP', logo: sapLogo },
-  { name: 'TripAdvisor', logo: tripadvisorLogo },
+  // { name: 'TripAdvisor', logo: tripadvisorLogo },
   { name: 'Wise', logo: wiseLogo },
 ]
 
