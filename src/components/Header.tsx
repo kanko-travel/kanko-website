@@ -113,6 +113,11 @@ export function Header() {
     ['#0f172a', '#ffffff'],
   )
 
+  const openInNewTab = (url: string) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   return (
     <motion.header
       className="fixed z-50 w-full py-6"
@@ -137,8 +142,13 @@ export function Header() {
             {/* <div className="hidden md:block">
               <NavLink href="/login">Sign in</NavLink>
             </div> */}
-            <Button href="/register" color="primary">
-              <span>Join us</span>
+            <Button
+              onClick={() =>
+                openInNewTab('https://x96t2tdwykm.typeform.com/to/KPzyQfcL')
+              }
+              color="primary"
+            >
+              <span>Get in touch</span>
             </Button>
             <div className="-mr-1 md:hidden">
               <MobileNavigation />
