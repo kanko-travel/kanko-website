@@ -61,7 +61,7 @@ export function FeaturesHoteliers() {
       title={title}
       subtitle={subtitle}
       features={features}
-      bgColour="bg-blue-500"
+      bgColour="bg-sky-600"
     />
   )
 }

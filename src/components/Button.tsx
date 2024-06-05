@@ -10,6 +10,8 @@ const baseStyles = {
 
 const variantStyles = {
   solid: {
+    primary:
+      'bg-[#32d98e] text-white hover:text-slate-100 hover:bg-green-500 active:bg-green-800 active:text-green-100 focus-visible:outline-green-600',
     slate:
       'bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 active:bg-slate-800 active:text-slate-300 focus-visible:outline-slate-900',
     blue: 'bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
@@ -17,6 +19,8 @@ const variantStyles = {
       'bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white',
   },
   outline: {
+    primary:
+      'ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
     slate:
       'ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
     white:
@@ -43,7 +47,7 @@ type ButtonProps = (
 
 export function Button({ className, ...props }: ButtonProps) {
   props.variant ??= 'solid'
-  props.color ??= 'slate'
+  props.color ??= 'primary'
 
   className = clsx(
     baseStyles[props.variant],

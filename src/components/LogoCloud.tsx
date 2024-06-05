@@ -28,12 +28,9 @@ const logos = [
 export default function LogoCloud() {
   return (
     <div className="flex flex-col items-center space-y-12 bg-slate-100 py-36">
-      <div className="max-w-3xl px-8">
-        <p className="text-center font-display text-base text-slate-900 sm:text-lg">
-          Optimize your workflow with integrations to your existing technology
-          stack
-        </p>
-      </div>
+      {/* <div className="max-w-3xl px-8">
+        <p className="text-center font-display text-base text-slate-900 sm:text-lg"></p>
+      </div> */}
       <div className="flex w-full">
         <Ticker duration={15}>
           {logos.map((company) => (

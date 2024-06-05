@@ -40,7 +40,9 @@ export function Features({
           <h2 className="font-display text-3xl font-semibold tracking-tight text-slate-800 sm:text-4xl md:text-5xl">
             {title}
           </h2>
-          <p className="mt-3 text-xl tracking-tight text-blue-50">{subtitle}</p>
+          <p className="mt-3 text-xl tracking-tight text-blue-50 sm:text-2xl">
+            {subtitle}
+          </p>
         </div>
 
         <Tab.Group

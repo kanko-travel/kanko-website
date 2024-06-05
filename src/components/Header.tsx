@@ -8,7 +8,9 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Favicon } from '@/components/Favicon'
+import { Logo } from './Logo'
 import { NavLink } from '@/components/NavLink'
+import { useScroll, motion, useTransform } from 'framer-motion'
 
 function MobileNavLink({
   href,
@@ -98,34 +100,52 @@ function MobileNavigation() {
 }
 
 export function Header() {
+  const { scrollY } = useScroll()
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 5, 50],
+    ['transparent', '#e0ece5', '#0f172a'],
+  )
+
+  const logoPrimaryColor = useTransform(
+    scrollY,
+    [30, 50],
+    ['#0f172a', '#ffffff'],
+  )
+
   return (
-    <header className="fixed z-50 w-full bg-white py-6">
+    <motion.header
+      className="fixed z-50 w-full py-6"
+      style={{ backgroundColor, transition: 'background-color 0.3s ease' }}
+    >
       <Container>
         <nav className="relative flex justify-between">
           <div className="flex items-center md:gap-x-12">
             <Link href="#" aria-label="Home">
-              <Favicon className="h-8 w-auto" />
+              {/* <Favicon className="h-8 w-auto" /> */}
+              <Logo
+                primaryColour={logoPrimaryColor as unknown as string}
+                className="h-8 w-auto"
+              />
             </Link>
-            <div className="hidden md:flex md:gap-x-6">
+            {/* <div className="hidden md:flex md:gap-x-6">
               <NavLink href="#hoteliers">Hoteliers</NavLink>
               <NavLink href="#travel-agents">Travel Agents</NavLink>
-            </div>
+            </div> */}
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
             {/* <div className="hidden md:block">
               <NavLink href="/login">Sign in</NavLink>
             </div> */}
-            {/* <Button href="/register" color="blue">
-              <span>
-                Get started <span className="hidden lg:inline">today</span>
-              </span>
-            </Button> */}
+            <Button href="/register" color="primary">
+              <span>Join us</span>
+            </Button>
             <div className="-mr-1 md:hidden">
               <MobileNavigation />
             </div>
           </div>
         </nav>
       </Container>
-    </header>
+    </motion.header>
   )
 }

@@ -9,6 +9,8 @@ import { FeaturesTravelAgents } from '@/components/FeaturesTravelAgents'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Testimonials } from '@/components/Testimonials'
 import LogoCloud from '@/components/LogoCloud'
+import FeaturePresentation from '@/components/FeaturePresentation'
+import FeaturesMain from '@/components/FeaturesMain'
 
 export default function Home() {
   return (
@@ -16,9 +18,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <FeaturesHoteliers />
+        {/* <FeaturePresentation /> */}
+        {/* <FeaturesHoteliers /> */}
         {/* <FeaturesTravelAgents /> */}
-        <LogoCloud />
+        <FeaturesMain />
+        {/* <LogoCloud /> */}
         {/* <SecondaryFeatures /> */}
         {/* <CallToAction />
         <Testimonials />

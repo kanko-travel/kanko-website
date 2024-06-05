@@ -1,86 +1,41 @@
+'use client'
+
 import Image from 'next/image'
 
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import logoLaravel from '@/images/logos/laravel.svg'
-import logoMirage from '@/images/logos/mirage.svg'
-import logoStatamic from '@/images/logos/statamic.svg'
-import logoStaticKit from '@/images/logos/statickit.svg'
-import logoTransistor from '@/images/logos/transistor.svg'
-import logoTuple from '@/images/logos/tuple.svg'
-import { Logo } from './Logo'
+import CountryCycler from './CountryCycler'
+
+import bgImg from '../images/backgrounds/eberhard-grossgasteiger-vztdLE4li3o-unsplash.jpg'
+// import j1Img from '../images/backgrounds/j1.jpg'
+// import j2Img from '../images/backgrounds/j2.jpg'
+// import s1Img from '../images/backgrounds/s1.jpg'
+// import l1Img from '../images/backgrounds/l1.jpg'
+// import z1 from '../images/backgrounds/z1.jpg'
 
 export function Hero() {
   return (
-    <div className="flex h-screen items-center bg-white py-24">
-      <Container className="text-center">
-        <div className="mb-8 flex justify-center sm:mb-16">
-          <Logo className="h-8 w-auto sm:h-16" />
+    <div className="relative flex min-h-screen w-full items-center bg-sky-50 py-24">
+      <div className="absolute inset-0">
+        <div className="relative h-full w-full">
+          <Image
+            src={bgImg}
+            alt="background image"
+            fill
+            style={{ objectFit: 'cover' }}
+          />
         </div>
-        <h1 className="mx-auto max-w-5xl font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-          The Platform Connecting{' '}
-          <span className="text-blue-700">Hoteliers</span>
-          {' with '}
-          <span className="text-green-700">Travel Agents</span>
-        </h1>
-        <p className="mx-auto mt-6 hidden max-w-2xl text-lg tracking-tight text-slate-700 sm:block sm:text-xl">
-          Kanko connects Maldives travel services with global agents directly,
-          removing complexity and enhancing visibility.
-        </p>
-        <div className="mt-12 flex justify-center gap-x-6">
-          {/* <Button href="/register" color="blue">
-            <span>
-              Get started <span className="hidden lg:inline">today</span>
-            </span>
-          </Button> */}
-          {/* <Button
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            variant="outline"
-          >
-            <svg
-              aria-hidden="true"
-              className="h-3 w-3 flex-none fill-blue-600 group-active:fill-current"
-            >
-              <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z" />
-            </svg>
-            <span className="ml-3">Watch video</span>
-          </Button> */}
+      </div>
+      <Container className="z-10 text-center">
+        <div className="mx-auto">
+          <h1 className="w-full text-left font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
+            Connecting Travel Agents & Suppliers in <CountryCycler />
+          </h1>
+          <p className="mt-10 hidden w-full text-left text-lg tracking-tight text-slate-900 sm:block sm:text-3xl">
+            Kanko connects travel suppliers and agents directly, making services
+            more accessible, affordable and profitable throughout the travel
+            supply chain.
+          </p>
         </div>
-        {/* <div className="mt-36 lg:mt-44">
-        <p className="font-display text-base text-slate-900">
-          Trusted by these six companies so far
-        </p>
-        <ul
-          role="list"
-          className="mt-8 flex items-center justify-center gap-x-8 sm:flex-col sm:gap-x-0 sm:gap-y-10 xl:flex-row xl:gap-x-12 xl:gap-y-0"
-        >
-          {[
-            [
-              { name: 'Transistor', logo: logoTransistor },
-              { name: 'Tuple', logo: logoTuple },
-              { name: 'StaticKit', logo: logoStaticKit },
-            ],
-            [
-              { name: 'Mirage', logo: logoMirage },
-              { name: 'Laravel', logo: logoLaravel },
-              { name: 'Statamic', logo: logoStatamic },
-            ],
-          ].map((group, groupIndex) => (
-            <li key={groupIndex}>
-              <ul
-                role="list"
-                className="flex flex-col items-center gap-y-8 sm:flex-row sm:gap-x-12 sm:gap-y-0"
-              >
-                {group.map((company) => (
-                  <li key={company.name} className="flex">
-                    <Image src={company.logo} alt={company.name} unoptimized />
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div> */}
       </Container>
     </div>
   )

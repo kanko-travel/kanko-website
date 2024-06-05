@@ -1,9 +1,21 @@
 'use client'
 
-const primaryColour = '#3b4147'
-const secondaryColour = '#32d98e'
+import { motion } from 'framer-motion'
+import { MotionValue } from 'framer-motion/dom'
 
-export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
+const PRIMARY_COLOUR = '#3b4147'
+const SECONDARY_COLOUR = '#32d98e'
+
+interface LogoProps extends React.ComponentPropsWithoutRef<'svg'> {
+  primaryColour?: string
+  secondaryColour?: string
+}
+
+export function Logo({
+  primaryColour = PRIMARY_COLOUR,
+  secondaryColour = SECONDARY_COLOUR,
+  ...props
+}: LogoProps) {
   return (
     <svg
       width="273"
@@ -28,13 +40,17 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
           id="g12"
           transform="matrix(0.57442268,0,0,0.57442268,-273.03608,-193.62234)"
         >
-          <path
+          <motion.path
             transform="matrix(1,0,0,-1,642.1741,562.4258)"
             d="M 0,0 20.33,8.78 V -12.48 H 0 Z"
             id="path5"
-            style={{ fill: secondaryColour }}
+            style={{ fill: secondaryColour as string }}
           />
-          <g clipPath="url(#clip_13)" id="g10" style={{ fill: primaryColour }}>
+          <motion.g
+            clipPath="url(#clip_13)"
+            id="g10"
+            style={{ fill: primaryColour as string }}
+          >
             <path
               transform="matrix(1,0,0,-1,707.5242,545.3333)"
               d="M 0,0 23.22,-29.57 H -3.05 l -15.29,19.82 c -4.69,6.1 -11.93,9.68 -19.62,9.75 h -56.52 l 15.69,20.34 h 13.44 v 29.9 h 20.33 v -29.9 h 7.06 c 7.69,0.07 14.93,3.65 19.62,9.75 L -2.8,50.24 H 23.46 L 0,20.34 -2.36,17.32 c -2.09,-2.66 -4.46,-5.06 -7.02,-7.15 2.56,-2.1 4.93,-4.49 7.02,-7.16 z"
@@ -65,7 +81,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
               id="path10"
               // style={{ fill: primaryColour }}
             />
-          </g>
+          </motion.g>
         </g>
       </g>
     </svg>
