@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Kanko - The Marketplace for Hoteliers and Travel Agents',
   },
   description:
-    'Kanko connects Maldives travel services with global agents directly, removing complexity and enhancing visibility.',
+    'Kanko connects travel suppliers and agents directly, making services more accessible, affordable and profitable throughout the travel supply chain.',
 }
 
 const inter = Inter({
