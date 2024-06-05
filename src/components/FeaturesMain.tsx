@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams } from 'next/navigation'
-import { useCallback, useState } from 'react'
+import { Suspense, useCallback, useState } from 'react'
 import { motion } from 'framer-motion'
 
 import { Container } from './Container'
@@ -54,7 +54,9 @@ export default function FeaturesMain() {
           <h1 className="w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
             Is Kanko for You?
           </h1>
-          <Tabs tabs={tabs} />
+          <Suspense>
+            <Tabs tabs={tabs} />
+          </Suspense>
         </div>
       </Container>
     </div>
