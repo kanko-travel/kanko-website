@@ -7,24 +7,8 @@ import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { Favicon } from '@/components/Favicon'
 import { Logo } from './Logo'
-import { NavLink } from '@/components/NavLink'
 import { useScroll, motion, useTransform } from 'framer-motion'
-
-function MobileNavLink({
-  href,
-  children,
-}: {
-  href: string
-  children: React.ReactNode
-}) {
-  return (
-    <Popover.Button as={Link} href={href} className="block w-full p-2">
-      {children}
-    </Popover.Button>
-  )
-}
 
 function MobileNavIcon({ open }: { open: boolean }) {
   return (
