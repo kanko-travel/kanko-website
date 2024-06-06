@@ -65,13 +65,13 @@ const CountryCycler = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % countries.length)
-    }, 2000) // Change country every 2 seconds
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div
+    <span
       style={{ verticalAlign: 'top' }}
       className="relative inline-block overflow-hidden text-[#32d98e]"
     >
@@ -88,7 +88,7 @@ const CountryCycler = () => {
         </motion.span>
       </AnimatePresence>
       <span className="opacity-0">Czech Republic</span>
-    </div>
+    </span>
   )
 }
 

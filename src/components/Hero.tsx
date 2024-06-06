@@ -26,7 +26,7 @@ export function Hero() {
         </div>
       </div>
       <Container className="z-10 text-center">
-        <div className="mx-auto">
+        <div className="mx-auto overflow-hidden">
           <h1 className="w-full text-left font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
             Connecting Travel Agents & Suppliers in <CountryCycler />
           </h1>
