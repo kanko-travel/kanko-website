@@ -19,7 +19,7 @@ const airlineIcon = (
     height="100%"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#32d98e"
+    stroke="#0f172a"
     strokeWidth="1.25"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -37,7 +37,7 @@ const planeIcon = (
     height="100%"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#32d98e"
+    stroke="#0f172a"
     strokeWidth="1.25"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -54,7 +54,7 @@ const hotelIcon = (
     height="100%"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#32d98e"
+    stroke="#0f172a"
     strokeWidth="1.25"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -77,7 +77,7 @@ const beachIcon = (
     height="100%"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#32d98e"
+    stroke="#0f172a"
     strokeWidth="1.25"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -131,7 +131,7 @@ export default function FeaturesMain() {
   return (
     <div className="w-full">
       <Container>
-        <div className="mx-auto space-y-8 py-24">
+        <div className="mx-auto space-y-6 py-24 sm:space-y-8">
           <h1 className="w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
             Is Kanko for <span className="">You</span>?
           </h1>
@@ -242,9 +242,9 @@ function TabButton({
   onClick: (i: number) => void
 }) {
   const className =
-    'cursor-pointer flex justify-center rounded-full py-3 px-4 sm:py-4 sm:px-6 text-lg sm:text-xl font-semibold'
+    'cursor-pointer flex justify-center rounded-full py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-xl'
   const unselectedClassName =
-    'text-slate-900 ring-2 ring-inset ring-slate-900 hover:ring-[#32d98e] hover:text-[#32d98e]'
+    'text-slate-900 ring-1 ring-inset ring-slate-900 hover:ring-[#32d98e] hover:text-[#32d98e]'
   const selectedClassName = 'text-white bg-[#32d98e]'
 
   return (
@@ -268,7 +268,7 @@ function ElevatorPitch({ title, description, lottie }) {
       exit={{ x: '20%', opacity: 0 }}
       className="flex w-full items-center sm:space-x-16"
     >
-      <div className="">
+      <div className="hidden sm:block">
         <LottiePlayer key="questionLottie" animationData={lottie} />
       </div>
       <motion.div className="flex w-full flex-grow flex-col space-y-4 text-left text-slate-900">
