@@ -242,7 +242,7 @@ function TabButton({
   onClick: (i: number) => void
 }) {
   const className =
-    'cursor-pointer flex justify-center rounded-full py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-xl'
+    'cursor-pointer flex justify-center rounded-full py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-lg'
   const unselectedClassName =
     'text-slate-900 ring-1 ring-inset ring-slate-900 hover:ring-[#32d98e] hover:text-[#32d98e]'
   const selectedClassName = 'text-white bg-[#32d98e]'
