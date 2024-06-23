@@ -97,7 +97,7 @@ const tabs = [
     content: {
       title: 'Kanko for Hotels',
       description:
-        'Kanko is a marketplace that helps you secure customer segments who prefer the personalised approach of travel agents, like luxury tourists and emerging markets that OTAs simply can’t reach. Kanko transforms your current operations within this segment by connecting you to more travel agents swiftly, securely, and without any intermediaries, helping you work less and sell more.',
+        'Kanko is your marketplace to reach customer segments like luxury tourists and emerging markets that OTAs miss. Connect directly with travel agents quickly and securely, without intermediaries, helping you sell more while doing less.',
       featurePresentation: <FeaturePresentationSellers />,
       lottie: hotelLottie,
       icon: hotelIcon,
@@ -108,30 +108,30 @@ const tabs = [
     content: {
       title: 'Kanko for Travel Agents',
       description:
-        'Kanko is a marketplace that helps you secure customer segments who prefer the personalised approach of travel agents, like luxury tourists and emerging markets that OTAs simply can’t reach. Kanko transforms your current operations within this segment by connecting you to more travel agents swiftly, securely, and without any intermediaries, helping you work less and sell more.',
+        'Kanko gives you easy access to properties and travel services worldwide, catering to any budget or preference. Our all in one service handles everything from booking to payment to management, ensuring a hassle-free experience from start to finish.',
       featurePresentation: <FeaturePresentationSellers />,
       lottie: travelAgencyLottie,
       icon: beachIcon,
     },
   },
-  {
-    name: 'Airlines',
-    content: {
-      title: 'Kanko for Airlines',
-      description:
-        'Kanko is a marketplace that helps you secure customer segments who prefer the personalised approach of travel agents, like luxury tourists and emerging markets that OTAs simply can’t reach. Kanko transforms your current operations within this segment by connecting you to more travel agents swiftly, securely, and without any intermediaries, helping you work less and sell more.',
-      featurePresentation: <FeaturePresentationSellers />,
-      lottie: planeLottie,
-      icon: airlineIcon,
-    },
-  },
+  // {
+  //   name: 'Airlines',
+  //   content: {
+  //     title: 'Kanko for Airlines',
+  //     description:
+  //       'Kanko is a marketplace that helps you secure customer segments who prefer the personalised approach of travel agents, like luxury tourists and emerging markets that OTAs simply can’t reach. Kanko transforms your current operations within this segment by connecting you to more travel agents swiftly, securely, and without any intermediaries, helping you work less and sell more.',
+  //     featurePresentation: <FeaturePresentationSellers />,
+  //     lottie: planeLottie,
+  //     icon: airlineIcon,
+  //   },
+  // },
 ]
 
 export default function FeaturesMain() {
   return (
     <div className="w-full">
       <Container>
-        <div className="mx-auto space-y-6 py-24 sm:space-y-8">
+        <div className="mx-auto space-y-8 py-24 sm:space-y-8">
           <h1 className="w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
             Is Kanko for <span className="">You</span>?
           </h1>
@@ -268,17 +268,21 @@ function ElevatorPitch({ title, description, lottie }) {
       exit={{ x: '20%', opacity: 0 }}
       className="flex w-full items-center sm:space-x-16"
     >
-      <div className="hidden sm:block">
+      {/* <div className="hidden sm:block">
         <LottiePlayer key="questionLottie" animationData={lottie} />
+      </div> */}
+      <div className="mx-auto w-3/5">
+        <div className="tex-slate-900 rounded-4xl bg-white px-20 py-20 text-center ring-1 ring-slate-900">
+          <motion.div className="flex w-full flex-grow flex-col space-y-4">
+            <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-5xl">
+              {title}
+            </motion.h1>
+            <motion.p className="w-full text-xl font-light sm:text-2xl">
+              {description}
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
-      <motion.div className="flex w-full flex-grow flex-col space-y-4 text-left text-slate-900">
-        <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-5xl">
-          {title}
-        </motion.h1>
-        <motion.p className="w-full text-xl font-light sm:text-2xl">
-          {description}
-        </motion.p>
-      </motion.div>
     </motion.div>
   )
 }
