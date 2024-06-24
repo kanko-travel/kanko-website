@@ -6,6 +6,7 @@ import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 
 import { Container } from './Container'
 import FeaturePresentationSellers from './FeaturePresentationSellers'
+import FeaturePresentationBuyers from './FeaturePresentationBuyers'
 import LottiePlayer from './LottiePlayer'
 
 import hotelLottie from '../lotties/hotel.json'
@@ -109,7 +110,7 @@ const tabs = [
       title: 'Kanko for Travel Agents',
       description:
         'Kanko gives you easy access to properties and travel services worldwide, catering to any budget or preference. Our all in one service handles everything from booking to payment to management, ensuring a hassle-free experience from start to finish.',
-      featurePresentation: <FeaturePresentationSellers />,
+      featurePresentation: <FeaturePresentationBuyers />,
       lottie: travelAgencyLottie,
       icon: beachIcon,
     },
@@ -131,10 +132,10 @@ export default function FeaturesMain() {
   return (
     <div className="w-full">
       <Container>
-        <div className="mx-auto space-y-8 py-24 sm:space-y-8">
-          <h1 className="w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
+        <div className="mx-auto py-24 sm:space-y-8">
+          {/* <h1 className="mb-12 w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
             Is Kanko for <span className="">You</span>?
-          </h1>
+          </h1> */}
           <Suspense>
             <Tabs tabs={tabs} />
           </Suspense>
@@ -176,7 +177,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
 
   return (
     <div className="w-full">
-      <div className="mb-16 flex justify-center space-x-6">
+      <div className="mb-10 flex justify-center space-x-6">
         {tabs.map((tab, i) => (
           <TabButton
             name={tab.name}
@@ -199,7 +200,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
           ) : null,
         )}
       </AnimatePresence>
-      <div className="mt-12 w-full">
+      <div className="mt-6 w-full">
         <div className="relative">
           <div
             className="absolute inset-0 flex items-center"
@@ -208,7 +209,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center">
-            <span className="flex w-20 items-center justify-center bg-white p-4">
+            <span className="flex w-20 items-center justify-center bg-white p-6">
               <AnimatePresence mode="wait">
                 <motion.span
                   initial={{ opacity: 0 }}
@@ -266,15 +267,15 @@ function ElevatorPitch({ title, description, lottie }) {
       initial={{ x: '-20%', opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: '20%', opacity: 0 }}
-      className="flex w-full items-center sm:space-x-16"
+      className="flex w-full items-center"
     >
       {/* <div className="hidden sm:block">
         <LottiePlayer key="questionLottie" animationData={lottie} />
       </div> */}
-      <div className="mx-auto w-3/5">
-        <div className="tex-slate-900 rounded-4xl bg-white px-20 py-20 text-center ring-1 ring-slate-900">
-          <motion.div className="flex w-full flex-grow flex-col space-y-4">
-            <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-5xl">
+      <div className="mx-auto w-full lg:w-3/5">
+        <div className="rounded-4xl bg-white text-center text-slate-900 sm:px-16 sm:py-16 sm:ring-1 sm:ring-slate-900">
+          <motion.div className="flex w-full flex-grow flex-col space-y-6">
+            <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-4xl">
               {title}
             </motion.h1>
             <motion.p className="w-full text-xl font-light sm:text-2xl">

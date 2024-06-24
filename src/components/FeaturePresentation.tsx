@@ -44,11 +44,11 @@ function Feature({ title, description, icon }: FeatureProps) {
     <div className="w-full sm:w-3/5">
       <motion.div
         ref={ref}
-        className="flex h-full w-full flex-col items-center justify-center space-y-4 rounded-4xl text-left sm:flex-row sm:space-x-16 sm:space-y-0"
+        className="flex h-full w-full flex-col items-center justify-center space-y-4 rounded-4xl sm:flex-row sm:space-x-16 sm:space-y-0"
         style={{ scale, opacity }}
       >
         <div className="w-12 sm:w-64">{icon}</div>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 text-center sm:text-left">
           <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter text-[#32d98e] sm:text-4xl">
             {title}
           </motion.h1>

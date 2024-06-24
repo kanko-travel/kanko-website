@@ -15,7 +15,7 @@ import bgImg from '../images/backgrounds/eberhard-grossgasteiger-vztdLE4li3o-uns
 export function Hero() {
   return (
     <div className="relative flex min-h-screen w-full items-center bg-sky-50 py-24">
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         <div className="relative h-full w-full">
           <Image
             src={bgImg}
@@ -24,7 +24,7 @@ export function Hero() {
             style={{ objectFit: 'cover' }}
           />
         </div>
-      </div>
+      </div> */}
       <Container className="z-10 text-center">
         <div className="mx-auto overflow-hidden">
           <h1 className="w-full text-left font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
