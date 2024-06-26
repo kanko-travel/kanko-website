@@ -114,7 +114,7 @@ export function Header() {
               {/* <Favicon className="h-8 w-auto" /> */}
               <Logo
                 primaryColour={logoPrimaryColor as unknown as string}
-                className="h-8 w-auto"
+                className="h-7 w-auto sm:h-8"
               />
             </Link>
             {/* <div className="hidden md:flex md:gap-x-6">
@@ -134,9 +134,9 @@ export function Header() {
             >
               <span>Get in touch</span>
             </Button>
-            <div className="-mr-1 md:hidden">
+            {/* <div className="-mr-1 md:hidden">
               <MobileNavigation />
-            </div>
+            </div> */}
           </div>
         </nav>
       </Container>

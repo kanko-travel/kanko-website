@@ -37,7 +37,7 @@ function Feature({ title, description, icon }: FeatureProps) {
 
   const { scrollY } = useScroll()
 
-  const scale = useTransform(scrollY, [start, end], [0, 1])
+  const scale = useTransform(scrollY, [start, end], [0.8, 1])
   const opacity = useTransform(scrollY, [start, end], [0, 1])
 
   return (

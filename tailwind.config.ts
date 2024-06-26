@@ -25,8 +25,8 @@ export default {
         '4xl': '2rem',
       },
       fontFamily: {
-        sans: ['var(--font-poppins)', 'var(--font-inter)'],
-        display: ['var(--font-poppins)', 'var(--font-lexend)'],
+        sans: ['var(--font-lexend)', 'var(--font-inter)'],
+        display: ['var(--font-lexend)'],
       },
       maxWidth: {
         '2xl': '40rem',

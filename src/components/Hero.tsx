@@ -30,7 +30,7 @@ export function Hero() {
           <h1 className="w-full text-left font-display text-4xl font-medium tracking-tight text-slate-900 sm:text-7xl">
             Connecting Travel Agents & Suppliers in <CountryCycler />
           </h1>
-          <p className="mt-10 hidden w-full text-left text-lg tracking-tight text-slate-900 sm:block sm:text-3xl">
+          <p className="mt-10 hidden w-full text-left text-lg font-light tracking-tight text-slate-900 sm:block sm:text-3xl">
             Kanko connects travel suppliers and agents directly, making services
             more accessible, affordable and profitable throughout the travel
             supply chain.

@@ -1,4 +1,4 @@
-import { Inter, Lexend, Poppins } from 'next/font/google'
+import { Inter, Lexend } from 'next/font/google'
 import clsx from 'clsx'
 
 import '@/styles/tailwind.css'
@@ -25,13 +25,6 @@ const lexend = Lexend({
   variable: '--font-lexend',
 })
 
-const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-})
-
 export default function RootLayout({
   children,
 }: {
@@ -44,7 +37,6 @@ export default function RootLayout({
         'h-full scroll-smooth bg-white antialiased',
         inter.variable,
         lexend.variable,
-        poppins.variable,
       )}
     >
       <body className="flex h-full flex-col">{children}</body>
