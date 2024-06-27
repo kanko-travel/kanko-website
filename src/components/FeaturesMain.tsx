@@ -98,7 +98,7 @@ const tabs = [
     content: {
       title: 'Kanko for Hotels',
       description:
-        'Kanko is your marketplace to reach customer segments like luxury tourists and emerging markets that OTAs miss. Connect directly with travel agents quickly and securely, without intermediaries, helping you sell more while doing less.',
+        "Kanko is your gateway to travel agents worldwide, so you can reach customer segments that OTA's can't",
       featurePresentation: <FeaturePresentationSellers />,
       lottie: hotelLottie,
       icon: hotelIcon,
@@ -177,7 +177,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
 
   return (
     <div className="w-full">
-      <div className="mb-10 flex justify-center space-x-6">
+      <div className="mb-16 flex justify-center space-x-6">
         {tabs.map((tab, i) => (
           <TabButton
             name={tab.name}
@@ -200,7 +200,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
           ) : null,
         )}
       </AnimatePresence>
-      <div className="mt-6 w-full">
+      {/* <div className="mt-6 w-full">
         <div className="relative">
           <div
             className="absolute inset-0 flex items-center"
@@ -223,7 +223,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="mt-24 w-full">
         {tabs[selected].content.featurePresentation}
       </div>
@@ -267,13 +267,13 @@ function ElevatorPitch({ title, description, lottie }) {
       initial={{ x: '-20%', opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: '20%', opacity: 0 }}
-      className="flex w-full items-center"
+      className="flex w-full items-center justify-end"
     >
       {/* <div className="hidden sm:block">
         <LottiePlayer key="questionLottie" animationData={lottie} />
       </div> */}
-      <div className="mx-auto w-full lg:w-3/5">
-        <div className="rounded-4xl bg-white text-center text-slate-900 sm:px-16 sm:py-16 sm:ring-1 sm:ring-slate-900">
+      <div className="w-full lg:w-[66%]">
+        {/* <div className="rounded-4xl bg-white text-left text-slate-900 sm:px-16 sm:py-16 sm:ring-1 sm:ring-slate-900">
           <motion.div className="flex w-full flex-grow flex-col space-y-6">
             <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-4xl">
               {title}
@@ -282,7 +282,10 @@ function ElevatorPitch({ title, description, lottie }) {
               {description}
             </motion.p>
           </motion.div>
-        </div>
+        </div> */}
+        <motion.p className="w-full font-display text-xl font-medium tracking-tighter sm:text-6xl">
+          {description}
+        </motion.p>
       </div>
     </motion.div>
   )
