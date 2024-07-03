@@ -20,6 +20,7 @@ import CommonFeatures from './CommonFeatures'
 
 import commonImg1 from '../images/backgrounds/common_1.jpg'
 import commonImg4 from '../images/backgrounds/common_5.jpg'
+import commonImg6 from '../images/backgrounds/common_6.jpg'
 
 const featuresCommon = [
   {
@@ -38,9 +39,9 @@ const featuresCommon = [
     title: 'Grow Comfortably',
     description:
       'Scale your operations smoothly regardless of business size, with features designed to accommodate growth and adapt to changing business needs. Your plan grows with you.',
-    // bgImg: commonImg2,
-    // applyGradient: true,
-    bgColour: '#bc7155',
+    bgImg: commonImg6,
+    applyGradient: true,
+    // bgColour: '#bc7155',
   },
   {
     title: 'Deploy Robust Security',
@@ -201,9 +202,9 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
         viewport={{ once: true, amount: 0.4 }}
         className="mx-auto mb-6 w-full sm:mb-8"
       >
-        <h2 className="text-center font-display text-2xl sm:text-4xl">
+        <h2 className="text-kanko-grey text-center font-display text-2xl sm:text-4xl">
           <span>A Solution Tailored to You</span>
-          <span className="ml-2 text-3xl text-[#32d98e] sm:text-5xl">.</span>
+          <span className="text-kanko-green ml-2 text-3xl sm:text-5xl">.</span>
         </h2>
       </motion.div>
       <motion.div
@@ -322,7 +323,7 @@ function ElevatorPitch({ title, description, features }) {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.4 }}
-            className="w-full font-display text-2xl tracking-tight sm:text-4xl sm:leading-tight"
+            className="text-kanko-grey w-full font-display text-2xl tracking-tight sm:text-4xl sm:leading-tight"
           >
             {description}
           </motion.p>

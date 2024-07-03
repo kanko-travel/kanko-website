@@ -94,7 +94,8 @@ export function Header() {
   const logoPrimaryColor = useTransform(
     scrollY,
     [30, 50],
-    ['#ffffff', '#0f172a'],
+    ['#ffffff', '#3b4147'],
+    // ['#ffffff', '#0f172a'],
   )
 
   const openInNewTab = (url: string) => {

@@ -16,6 +16,28 @@ export interface CommonFeaturesProps {
 }
 
 const rootVariants = {
+  initial: {},
+  animate: {
+    transition: {},
+  },
+}
+
+const featureVariants = {
+  initial: {
+    // y: 50,
+    opacity: 0,
+  },
+  animate: {
+    // y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      delayChildren: 0.6,
+    },
+  },
+}
+
+const featureTextContainerVariants = {
   initial: {
     opacity: 0,
   },
@@ -27,7 +49,7 @@ const rootVariants = {
   },
 }
 
-const featureVariants = {
+const featureTextVariants = {
   initial: {
     y: 50,
     opacity: 0,
@@ -35,17 +57,19 @@ const featureVariants = {
   animate: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.6 },
+    transition: {
+      duration: 0.6,
+    },
   },
 }
 
 export default function CommonFeatures({ items }: CommonFeaturesProps) {
   return (
     <motion.div
-      variants={rootVariants}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true }}
+      // variants={rootVariants}
+      // initial="initial"
+      // whileInView="animate"
+      // viewport={{ once: true, amount: 0.2 }}
       className="grid w-full grid-cols-1 overflow-hidden sm:grid-cols-2"
     >
       {items.map(({ title, description, bgColour, bgImg, applyGradient }) => (
@@ -72,6 +96,9 @@ function CommonFeature({
   return (
     <motion.div
       variants={featureVariants}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.4 }}
       className="relative flex flex-col justify-end"
       style={{ height: '50vh', minHeight: '512px' }}
     >
@@ -102,14 +129,20 @@ function CommonFeature({
           }}
         />
       )}
-      <div className="z-10 p-12">
-        <h4 className="mb-4 font-display text-3xl font-medium leading-tight text-white sm:mb-6 sm:text-4xl">
+      <motion.div variants={featureTextContainerVariants} className="z-10 p-12">
+        <motion.h4
+          variants={featureTextVariants}
+          className="mb-4 font-display text-3xl font-medium leading-tight text-white sm:mb-6 sm:text-4xl"
+        >
           {title}
-        </h4>
-        <p className="font-display text-lg leading-tight text-white sm:text-xl">
+        </motion.h4>
+        <motion.p
+          variants={featureTextVariants}
+          className="font-display text-lg leading-tight text-white sm:text-xl"
+        >
           {description}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </motion.div>
   )
 }

@@ -31,6 +31,10 @@ export default {
       maxWidth: {
         '2xl': '40rem',
       },
+      colors: {
+        'kanko-grey': '#3b4147',
+        'kanko-green': '#32d98e',
+      },
     },
   },
   plugins: [formsPlugin, headlessuiPlugin],
