@@ -42,21 +42,21 @@ const countries = [
   'Japan',
   'Laos',
   'Malaysia',
-  'Maldives',
+  'the Maldives',
   'Mongolia',
   'Myanmar',
   'Nepal',
   'New Zealand',
   'Pakistan',
-  //   'Papua New Guinea',
+  'Papua New Guinea',
   'Philippines',
   'Singapore',
   'South Korea',
   'Sri Lanka',
   'Thailand',
   'Vietnam',
-  'UK',
-  'USA',
+  'the UK',
+  'the US',
 ]
 
 const CountryCycler = () => {
@@ -73,7 +73,7 @@ const CountryCycler = () => {
   return (
     <span
       style={{ verticalAlign: 'top' }}
-      className="relative inline-block overflow-hidden text-[#32d98e]"
+      className="relative inline-block w-full overflow-hidden text-[#32d98e]"
     >
       <AnimatePresence>
         <motion.span
@@ -87,7 +87,7 @@ const CountryCycler = () => {
           {countries[index]}
         </motion.span>
       </AnimatePresence>
-      <span className="opacity-0">Czech Republic</span>
+      <span className="opacity-0">{countries[index]}</span>
     </span>
   )
 }

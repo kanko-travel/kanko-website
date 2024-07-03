@@ -15,17 +15,17 @@ export default {
       '3xl': ['2rem', { lineHeight: '2.5rem' }],
       '4xl': ['2.5rem', { lineHeight: '3.5rem' }],
       '5xl': ['3rem', { lineHeight: '3.5rem' }],
-      '6xl': ['3.75rem', { lineHeight: '1' }],
-      '7xl': ['4.5rem', { lineHeight: '1.1' }],
-      '8xl': ['6rem', { lineHeight: '1' }],
-      '9xl': ['8rem', { lineHeight: '1' }],
+      '6xl': ['3.75rem', { lineHeight: '1.25' }],
+      '7xl': ['4.5rem', { lineHeight: '1.25' }],
+      '8xl': ['6rem', { lineHeight: '1.25' }],
+      '9xl': ['8rem', { lineHeight: '1.25' }],
     },
     extend: {
       borderRadius: {
         '4xl': '2rem',
       },
       fontFamily: {
-        sans: ['var(--font-lexend)', 'var(--font-inter)'],
+        sans: ['var(--font-inter)'],
         display: ['var(--font-lexend)'],
       },
       maxWidth: {
