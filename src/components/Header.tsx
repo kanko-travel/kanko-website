@@ -88,13 +88,13 @@ export function Header() {
   const backgroundColor = useTransform(
     scrollY,
     [0, 5, 50],
-    ['transparent', '#e0ece5', '#0f172a'],
+    ['transparent', '#3b9bf5', '#ffffff'],
   )
 
   const logoPrimaryColor = useTransform(
     scrollY,
     [30, 50],
-    ['#0f172a', '#ffffff'],
+    ['#ffffff', '#0f172a'],
   )
 
   const openInNewTab = (url: string) => {
@@ -104,7 +104,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed z-50 w-full py-6"
+      className="fixed z-50 w-full py-6 drop-shadow-sm"
       style={{ backgroundColor, transition: 'background-color 0.3s ease' }}
     >
       <Container>

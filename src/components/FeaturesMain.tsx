@@ -2,95 +2,102 @@
 
 import { useSearchParams } from 'next/navigation'
 import { Suspense, useCallback, useState } from 'react'
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { Container } from './Container'
-import FeaturePresentationSellers from './FeaturePresentationSellers'
-import FeaturePresentationBuyers from './FeaturePresentationBuyers'
-import LottiePlayer from './LottiePlayer'
+import FeatureGrid, { FeatureProps } from './FeatureGrid'
 
-import hotelLottie from '../lotties/hotel.json'
-import travelAgencyLottie from '../lotties/travel_agency.json'
-import planeLottie from '../lotties/plane.json'
+import {
+  IconBolt,
+  IconBulb,
+  IconAffiliate,
+  IconWorld,
+  IconShoppingBagPlus,
+  IconSwords,
+  IconReplace,
+} from '@tabler/icons-react'
+import CommonFeatures from './CommonFeatures'
 
-const airlineIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="100%"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#0f172a"
-    strokeWidth="1.25"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 1.414l2.897 -.776l-3.743 -6.244l2.898 -.777l5.675 5.727z" />
-    <path d="M3 21h18" />
-  </svg>
-)
+import commonImg1 from '../images/backgrounds/common_1.jpg'
+import commonImg4 from '../images/backgrounds/common_5.jpg'
 
-const planeIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="100%"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#0f172a"
-    strokeWidth="1.25"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z" />
-  </svg>
-)
+const featuresCommon = [
+  {
+    title: 'Break Language Barriers',
+    description:
+      "Don't let business get lost in translation. State-of-the-art translation technology helps you communicate in 103 different languages, even if you might be fluent in just one.",
+    bgImg: commonImg1,
+  },
+  {
+    title: 'Manage Your Organization',
+    description:
+      'Manage roles and permissions within your organisation to mimic reality, so everyone is doing what they should be. Add in and take out consultants easily too.',
+    bgColour: '#bc7155',
+  },
+  {
+    title: 'Grow Comfortably',
+    description:
+      'Scale your operations smoothly regardless of business size, with features designed to accommodate growth and adapt to changing business needs. Your plan grows with you.',
+    // bgImg: commonImg2,
+    // applyGradient: true,
+    bgColour: '#bc7155',
+  },
+  {
+    title: 'Deploy Robust Security',
+    description:
+      'Prioritize user security with advanced encryption and data protection protocols to safeguard all transactions and personal information.',
+    bgImg: commonImg4,
+    applyGradient: true,
+  },
+]
 
-const hotelIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="100%"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#0f172a"
-    strokeWidth="1.25"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M3 21l18 0" />
-    <path d="M5 21v-14l8 -4v18" />
-    <path d="M19 21v-10l-6 -4" />
-    <path d="M9 9l0 .01" />
-    <path d="M9 12l0 .01" />
-    <path d="M9 15l0 .01" />
-    <path d="M9 18l0 .01" />
-  </svg>
-)
+const featuresHotels = [
+  {
+    title: 'Get Paid Quickly',
+    description:
+      'Forget the delays and harness the power of real-time payments. Our global partners ensure you receive your funds quickly and reliably.',
+    icon: <IconBolt size={28} />,
+  },
+  {
+    title: 'Sell Smarter, Not Harder',
+    description:
+      'Maximize sales with Kanko’s dynamic pricing tools. Create custom and wholesale rates, bundles, and promotions, keeping your business selling to different audiences at attractive price points.',
+    icon: <IconBulb size={28} />,
+  },
+  {
+    title: 'Streamline Your Business',
+    description:
+      'Integrate seamlessly with your channel manager to ensure accurate inventory and booking information, so buyers aren’t left guessing.',
+    icon: <IconAffiliate size={28} />,
+  },
+  {
+    title: 'Expand Globally with Peace of Mind',
+    description:
+      'Kanko partners with industry leading verification services to eliminate fraud by ensuring you deal with verified businesses worldwide.',
+    icon: <IconWorld size={28} />,
+  },
+]
 
-const beachIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    height="100%"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="#0f172a"
-    strokeWidth="1.25"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0" />
-    <path d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z" />
-    <path d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196" />
-    <path d="M15 9l-3 5.196" />
-    <path d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25" />
-  </svg>
-)
+const featuresTravelAgents = [
+  {
+    title: 'Something for Everyone',
+    description:
+      'Create unique holidays for any budget. Access real-time inventory from a range of hotels and travel services, alongside exclusive experiences and services.',
+    icon: <IconShoppingBagPlus size={28} />,
+  },
+  {
+    title: 'Hassle-Free Transactions',
+    description:
+      'Our partnering payment services offer you flexibility in how you pay, while our business verification partners eliminate fraud to keep you booking with confidence.',
+    icon: <IconReplace size={28} />,
+  },
+  {
+    title: 'Gain the Edge',
+    description:
+      'Unlock dynamic prices from hotels, including promotions, bundles and wholesale rates. Enjoy your savings or pass it on and create hard-to-beat prices.',
+    icon: <IconSwords size={28} />,
+  },
+]
 
 const tabs = [
   {
@@ -98,49 +105,34 @@ const tabs = [
     content: {
       title: 'Kanko for Hotels',
       description:
-        "Kanko is your gateway to travel agents worldwide, so you can reach customer segments that OTA's can't",
-      featurePresentation: <FeaturePresentationSellers />,
-      lottie: hotelLottie,
-      icon: hotelIcon,
+        'Extend your reach and maximise your sales with Kanko. Connect your property with more travel agents worldwide and reach new customers easily on a swift, secure and reliable marketplace that keeps you selling 24/7.',
     },
+    features: featuresHotels,
   },
   {
     name: 'Travel Agents',
     content: {
       title: 'Kanko for Travel Agents',
       description:
-        'Kanko gives you easy access to properties and travel services worldwide, catering to any budget or preference. Our all in one service handles everything from booking to payment to management, ensuring a hassle-free experience from start to finish.',
-      featurePresentation: <FeaturePresentationBuyers />,
-      lottie: travelAgencyLottie,
-      icon: beachIcon,
+        'Kanko puts properties and travel services around the globe at your fingertips, so you have offerings for any customer’s budget and desire. Eliminate complexity from booking, buying and communications with properties, so you can focus on what matters.',
     },
+    features: featuresTravelAgents,
   },
-  // {
-  //   name: 'Airlines',
-  //   content: {
-  //     title: 'Kanko for Airlines',
-  //     description:
-  //       'Kanko is a marketplace that helps you secure customer segments who prefer the personalised approach of travel agents, like luxury tourists and emerging markets that OTAs simply can’t reach. Kanko transforms your current operations within this segment by connecting you to more travel agents swiftly, securely, and without any intermediaries, helping you work less and sell more.',
-  //     featurePresentation: <FeaturePresentationSellers />,
-  //     lottie: planeLottie,
-  //     icon: airlineIcon,
-  //   },
-  // },
 ]
 
 export default function FeaturesMain() {
   return (
     <div className="w-full">
       <Container>
-        <div className="mx-auto py-24 sm:space-y-8">
-          {/* <h1 className="mb-12 w-full text-center font-display text-xl font-medium tracking-tighter text-slate-900 sm:text-3xl">
-            Is Kanko for <span className="">You</span>?
-          </h1> */}
+        <div className="mx-auto sm:space-y-8">
           <Suspense>
             <Tabs tabs={tabs} />
           </Suspense>
         </div>
       </Container>
+      <div className="mt-36 w-full">
+        <CommonFeatures items={featuresCommon} />
+      </div>
     </div>
   )
 }
@@ -148,14 +140,12 @@ export default function FeaturesMain() {
 interface TabProps {
   name: string
   content: TabContent
+  features: FeatureProps[]
 }
 
 interface TabContent {
   title: string
   description: string
-  featurePresentation: React.ReactNode
-  lottie: any
-  icon: React.ReactNode
 }
 
 function Tabs({ tabs }: { tabs: TabProps[] }) {
@@ -175,9 +165,54 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
     [updateSelected],
   )
 
+  const featuresHeadingVariants = {
+    initial: {
+      y: 50,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  }
+
+  const tabsVariants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.6,
+        staggerChildren: 0.3,
+      },
+    },
+  }
+
   return (
-    <div className="w-full">
-      <div className="mb-16 flex justify-center space-x-6">
+    <div className="w-full overflow-hidden">
+      <motion.div
+        variants={featuresHeadingVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.4 }}
+        className="mx-auto mb-6 w-full sm:mb-8"
+      >
+        <h2 className="text-center font-display text-2xl sm:text-4xl">
+          <span>A Solution Tailored to You</span>
+          <span className="ml-2 text-3xl text-[#32d98e] sm:text-5xl">.</span>
+        </h2>
+      </motion.div>
+      <motion.div
+        variants={tabsVariants}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.4 }}
+        className="mb-12 flex justify-center space-x-3 sm:mb-20 sm:space-x-8"
+      >
         {tabs.map((tab, i) => (
           <TabButton
             name={tab.name}
@@ -187,7 +222,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
             onClick={handleSelect}
           />
         ))}
-      </div>
+      </motion.div>
       <AnimatePresence mode="wait">
         {tabs.map((tab, i) =>
           selected == i ? (
@@ -195,40 +230,23 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
               key={i}
               title={tab.content.title}
               description={tab.content.description}
-              lottie={tab.content.lottie}
+              features={tab.features}
             />
           ) : null,
         )}
       </AnimatePresence>
-      {/* <div className="mt-6 w-full">
-        <div className="relative">
-          <div
-            className="absolute inset-0 flex items-center"
-            aria-hidden="true"
-          >
-            <div className="w-full border-t border-gray-300" />
-          </div>
-          <div className="relative flex justify-center">
-            <span className="flex w-20 items-center justify-center bg-white p-6">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  key={tabs[selected].name}
-                >
-                  {tabs[selected].content.icon}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-          </div>
-        </div>
-      </div> */}
-      <div className="mt-24 w-full">
-        {tabs[selected].content.featurePresentation}
-      </div>
     </div>
   )
+}
+
+const tabButtonVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
 }
 
 function TabButton({
@@ -243,50 +261,74 @@ function TabButton({
   onClick: (i: number) => void
 }) {
   const className =
-    'cursor-pointer flex justify-center rounded-full py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-lg'
-  const unselectedClassName =
-    'text-slate-900 ring-1 ring-inset ring-slate-900 hover:ring-[#32d98e] hover:text-[#32d98e]'
-  const selectedClassName = 'text-white bg-[#32d98e]'
+    'cursor-pointer flex justify-center rounded-lg py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-lg'
+  const unselectedClassName = 'text-gray-400 hover:text-slate-700'
+  const selectedClassName = 'text-slate-900 font-medium bg-gray-100'
 
   return (
-    <div
+    <motion.div
+      variants={tabButtonVariants}
       className={`${className} ${
         isSelected ? selectedClassName : unselectedClassName
       }`}
       onClick={() => onClick(index)}
     >
       {name}
-    </div>
+    </motion.div>
   )
 }
 
-function ElevatorPitch({ title, description, lottie }) {
+const elevatorPitchVariants = {
+  initial: {
+    y: 0,
+    opacity: 1,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+  exit: {
+    y: -50,
+    opacity: 0,
+    transition: { duration: 0.6 },
+  },
+}
+
+const elevatorPitchTextVariants = {
+  initial: {
+    y: 50,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.6 },
+  },
+}
+
+function ElevatorPitch({ title, description, features }) {
   return (
     <motion.div
-      key={title}
-      initial={{ x: '-20%', opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: '20%', opacity: 0 }}
-      className="flex w-full items-center justify-end"
+      variants={elevatorPitchVariants}
+      initial="initial"
+      exit="exit"
+      className="space-y-20 overflow-hidden"
     >
-      {/* <div className="hidden sm:block">
-        <LottiePlayer key="questionLottie" animationData={lottie} />
-      </div> */}
-      <div className="w-full lg:w-[66%]">
-        {/* <div className="rounded-4xl bg-white text-left text-slate-900 sm:px-16 sm:py-16 sm:ring-1 sm:ring-slate-900">
-          <motion.div className="flex w-full flex-grow flex-col space-y-6">
-            <motion.h1 className="w-full font-display text-3xl font-medium tracking-tighter sm:text-4xl">
-              {title}
-            </motion.h1>
-            <motion.p className="w-full text-xl font-light sm:text-2xl">
-              {description}
-            </motion.p>
-          </motion.div>
-        </div> */}
-        <motion.p className="w-full font-display text-xl font-medium tracking-tighter sm:text-6xl">
-          {description}
-        </motion.p>
+      <div className="flex w-full items-center justify-start">
+        <div className="w-full">
+          <motion.p
+            variants={elevatorPitchTextVariants}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.4 }}
+            className="w-full font-display text-2xl tracking-tight sm:text-4xl sm:leading-tight"
+          >
+            {description}
+          </motion.p>
+        </div>
       </div>
+      <FeatureGrid items={features} />
     </motion.div>
   )
 }
