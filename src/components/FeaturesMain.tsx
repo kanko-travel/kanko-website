@@ -20,6 +20,7 @@ import CommonFeatures from './CommonFeatures'
 
 import commonImg1 from '../images/backgrounds/common_1.jpg'
 import commonImg4 from '../images/backgrounds/common_5.jpg'
+import commonImg6 from '../images/backgrounds/common_6.jpg'
 
 const featuresCommon = [
   {
@@ -38,9 +39,9 @@ const featuresCommon = [
     title: 'Grow Comfortably',
     description:
       'Scale your operations smoothly regardless of business size, with features designed to accommodate growth and adapt to changing business needs. Your plan grows with you.',
-    // bgImg: commonImg2,
-    // applyGradient: true,
-    bgColour: '#bc7155',
+    bgImg: commonImg6,
+    applyGradient: true,
+    // bgColour: '#bc7155',
   },
   {
     title: 'Deploy Robust Security',
