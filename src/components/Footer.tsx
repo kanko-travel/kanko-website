@@ -43,7 +43,6 @@ export function Footer() {
             </Link>
           </div>
           <div className="flex flex-col items-end space-y-4">
-            {/* <Logo className="h-12 w-auto" /> */}
             <p className="text-sm text-slate-500 sm:mt-0">
               Copyright &copy; {new Date().getFullYear()} Kanko Travel Ltd. All
               rights reserved.

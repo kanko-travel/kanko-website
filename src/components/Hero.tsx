@@ -30,12 +30,12 @@ export function Hero() {
       <Container className="z-10 text-center">
         <div className="flex w-full">
           <div className="w-full overflow-hidden lg:w-4/5">
-            <h1 className="w-full text-left font-display text-4xl font-medium tracking-tighter text-slate-900 sm:text-6xl lg:text-7xl">
+            <h1 className="w-full text-left font-display text-4xl font-medium tracking-tighter text-[#3b4147] sm:text-6xl lg:text-7xl">
               The Marketplace for Travel Agents & Suppliers{' '}
               <span className="text-[#32d98e]">Everywhere</span>
               {/* <CountryCycler /> */}
             </h1>
-            <p className="hidden w-full text-left text-lg font-light tracking-tight text-gray-400 opacity-75 sm:mt-16 sm:block sm:text-2xl lg:text-3xl">
+            <p className="mt-8 w-full text-left text-xl font-light tracking-tight text-gray-400 opacity-75 sm:block sm:text-2xl lg:mt-16 lg:text-3xl">
               Kanko connects travel agents and suppliers directly, making
               services more accessible, affordable and profitable throughout the
               supply chain.

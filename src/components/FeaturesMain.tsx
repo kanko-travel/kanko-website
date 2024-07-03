@@ -202,7 +202,7 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
         viewport={{ once: true, amount: 0.4 }}
         className="mx-auto mb-6 w-full sm:mb-8"
       >
-        <h2 className="text-center font-display text-2xl sm:text-4xl">
+        <h2 className="text-center font-display text-2xl text-[#3b4147] sm:text-4xl">
           <span>A Solution Tailored to You</span>
           <span className="ml-2 text-3xl text-[#32d98e] sm:text-5xl">.</span>
         </h2>
@@ -323,7 +323,7 @@ function ElevatorPitch({ title, description, features }) {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.4 }}
-            className="w-full font-display text-2xl tracking-tight sm:text-4xl sm:leading-tight"
+            className="w-full font-display text-2xl tracking-tight text-[#3b4147] sm:text-4xl sm:leading-tight"
           >
             {description}
           </motion.p>

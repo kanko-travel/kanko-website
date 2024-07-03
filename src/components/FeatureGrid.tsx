@@ -60,10 +60,10 @@ function Feature({ title, description, icon }: FeatureProps) {
   return (
     <motion.div
       variants={featureVariants}
-      className="flex flex-col border-t-2 border-slate-900 pt-4 sm:pt-8"
+      className="flex flex-col border-t-2 border-[#3b4147] pt-4 sm:pt-8"
     >
       <div className="flex items-start justify-between">
-        <h4 className="mb-6 font-display text-xl font-medium text-slate-900 sm:text-2xl">
+        <h4 className="mb-6 font-display text-xl font-medium text-[#3b4147] sm:text-2xl">
           {title}
         </h4>
         <span className="">{icon}</span>
