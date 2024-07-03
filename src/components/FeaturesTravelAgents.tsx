@@ -1,6 +1,3 @@
-import animationGlobe from '@/lotties/globe.json'
-import animationCm from '@/lotties/connection.json'
-
 import { Features } from './Features'
 
 const title = (
@@ -15,19 +12,16 @@ const features = [
     title: 'Real Time Inventory',
     description:
       "This is a really cool feature travel agents don't want to miss out on. It's super cool. Did I mention that it's cool already?",
-    animationData: animationCm,
   },
   {
     title: 'Instant Booking Confirmation',
     description:
       'This is another super cool feature that might be particularly relevant to travel managers of the Spanish speaking kind.',
-    animationData: animationGlobe,
   },
   {
     title: 'Unparalled Booking Search',
     description:
       'This is another super cool feature that might be particularly relevant to travel managers of the Spanish speaking kind.',
-    animationData: animationGlobe,
   },
 ]
 

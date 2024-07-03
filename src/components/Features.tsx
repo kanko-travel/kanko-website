@@ -1,20 +1,10 @@
 'use client'
 
 import { ReactNode } from 'react'
-import Lottie from 'react-lottie'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-
-const lottieOptions = (animationData: any) => ({
-  loop: true,
-  autoplay: true,
-  animationData,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-})
 
 interface Feature {
   title: string
@@ -86,18 +76,6 @@ export function Features({
                   {features.map((feature) => (
                     <Tab.Panel key={feature.title} unmount={false}>
                       <div className="relative h-[450px] sm:h-96">
-                        {feature.animationData && (
-                          <div className="hidden h-full w-full items-center justify-end xl:flex">
-                            <div
-                              className="flex h-full items-center justify-end"
-                              style={{ width: '40%', height: 'auto' }}
-                            >
-                              <Lottie
-                                options={lottieOptions(feature.animationData)}
-                              />
-                            </div>
-                          </div>
-                        )}
                         <div className="relative flex h-full items-center xl:absolute xl:inset-0">
                           <div className="flex max-w-2xl flex-col">
                             <h2 className="text-2xl font-semibold tracking-tight text-slate-800 lg:text-3xl">

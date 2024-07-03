@@ -1,7 +1,3 @@
-import animationGlobe from '@/lotties/globe.json'
-import animationCm from '@/lotties/connection.json'
-import animationTransfer from '@/lotties/wire.json'
-
 import { Features } from './Features'
 import { ChannelManagerShowcase } from './ChannelManagerShowcase'
 
@@ -39,19 +35,16 @@ const features = [
         </div>
       </>
     ),
-    animationData: animationCm,
   },
   {
     title: 'Global Reach',
     description:
       'Kanko partners with major travel agencies in the UK and European Union. By listing your inventory on Kanko you have access to all of them.',
-    animationData: animationGlobe,
   },
   {
     title: 'Real Time Settlements',
     description:
       'Have payments wired straight to your account in your local currency, with real-time settlements per booking.',
-    animationData: animationTransfer,
   },
 ]
 
