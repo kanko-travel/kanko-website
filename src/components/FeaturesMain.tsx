@@ -264,7 +264,7 @@ function TabButton({
   const className =
     'cursor-pointer flex justify-center rounded-lg py-2 px-5 sm:py-2 sm:px-5 text-sm sm:text-lg'
   const unselectedClassName = 'text-gray-400 hover:text-slate-700'
-  const selectedClassName = 'text-slate-900 font-medium bg-gray-100'
+  const selectedClassName = 'text-slate-900 font-medium bg-green-100'
 
   return (
     <motion.div
