@@ -35,6 +35,9 @@ export default {
         'kanko-grey': '#3b4147',
         'kanko-green': '#32d98e',
       },
+      lineHeight: {
+        tighter: '1.2',
+      },
     },
   },
   plugins: [formsPlugin, headlessuiPlugin],

@@ -64,7 +64,7 @@ export function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="text-kanko-grey w-full text-left font-display text-4xl font-medium tracking-tighter sm:text-6xl sm:leading-tight lg:text-7xl"
+              className="text-kanko-grey sm:leading-tighter lg:leading-tighter w-full text-left font-display text-4xl font-medium tracking-tighter sm:text-6xl lg:text-7xl"
             >
               The Marketplace for Travel Agents & Suppliers{' '}
               <span className="text-kanko-green">Everywhere</span>
@@ -72,7 +72,7 @@ export function Hero() {
             </motion.h1>
             <motion.p
               variants={textVariants}
-              className="mt-6 w-full text-left text-xl font-light leading-snug tracking-tight text-gray-400 opacity-75 sm:text-2xl lg:mt-8 lg:text-3xl"
+              className="mt-6 w-full text-left text-xl font-light leading-snug tracking-tight text-gray-400 opacity-75 sm:mt-8 sm:text-2xl lg:mt-12 lg:text-3xl"
             >
               Kanko connects travel agents and suppliers directly, making
               services more accessible, affordable and profitable throughout the
