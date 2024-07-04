@@ -20,7 +20,7 @@ import CommonFeatures from './CommonFeatures'
 
 import commonImg1 from '../images/backgrounds/common_1.jpg'
 import commonImg4 from '../images/backgrounds/common_5.jpg'
-import commonImg6 from '../images/backgrounds/common_6.jpg'
+import commonImg7 from '../images/backgrounds/common_7.jpg'
 
 const featuresCommon = [
   {
@@ -33,15 +33,16 @@ const featuresCommon = [
     title: 'Manage Your Organization',
     description:
       'Manage roles and permissions within your organisation to mimic reality, so everyone is doing what they should be. Add in and take out consultants easily too.',
-    bgColour: '#bc7155',
+    // bgColour: '#bc7155',
+    bgImg: commonImg7,
   },
   {
     title: 'Grow Comfortably',
     description:
       'Scale your operations smoothly regardless of business size, with features designed to accommodate growth and adapt to changing business needs. Your plan grows with you.',
-    bgImg: commonImg6,
+    // bgImg: commonImg6,
     applyGradient: true,
-    // bgColour: '#bc7155',
+    bgColour: '#0f1c1c',
   },
   {
     title: 'Deploy Robust Security',
@@ -119,6 +120,15 @@ const tabs = [
     },
     features: featuresTravelAgents,
   },
+  // {
+  //   name: 'Airlines',
+  //   content: {
+  //     title: 'Kanko for Airlines',
+  //     description:
+  //       'Kanko puts properties and travel services around the globe at your fingertips, so you have offerings for any customer’s budget and desire. Eliminate complexity from booking, buying and communications with properties, so you can focus on what matters.',
+  //   },
+  //   features: featuresTravelAgents,
+  // },
 ]
 
 export default function FeaturesMain() {
