@@ -132,13 +132,13 @@ function CommonFeature({
       <motion.div variants={featureTextContainerVariants} className="z-10 p-12">
         <motion.h4
           variants={featureTextVariants}
-          className="mb-4 font-display text-3xl font-medium leading-tight text-white sm:mb-6 sm:text-4xl"
+          className="mb-4 font-display text-3xl font-medium leading-tight text-white sm:mb-6 sm:text-4xl sm:leading-tight"
         >
           {title}
         </motion.h4>
         <motion.p
           variants={featureTextVariants}
-          className="font-display text-lg leading-tight text-white sm:text-xl"
+          className="font-display text-lg leading-tight text-white sm:text-xl sm:leading-tight"
         >
           {description}
         </motion.p>

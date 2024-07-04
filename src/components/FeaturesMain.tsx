@@ -123,7 +123,7 @@ const tabs = [
 
 export default function FeaturesMain() {
   return (
-    <div className="w-full">
+    <div className="w-full pt-24">
       <Container>
         <div className="mx-auto sm:space-y-8">
           <Suspense>
