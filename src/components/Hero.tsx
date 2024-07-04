@@ -36,7 +36,7 @@ const textVariants = {
 export function Hero() {
   return (
     <div
-      className="relative flex min-h-screen w-full items-center sm:items-end sm:pb-12"
+      className="relative flex min-h-screen w-full items-center sm:items-end sm:py-24"
       style={{
         background:
           'linear-gradient(180deg, #2f95f4, rgb(255, 255, 255) 72.08%)',
@@ -64,7 +64,7 @@ export function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="text-kanko-grey w-full text-left font-display text-4xl font-medium tracking-tighter sm:text-6xl lg:text-7xl"
+              className="text-kanko-grey w-full text-left font-display text-4xl font-medium tracking-tighter sm:text-6xl sm:leading-tight lg:text-7xl"
             >
               The Marketplace for Travel Agents & Suppliers{' '}
               <span className="text-kanko-green">Everywhere</span>
@@ -72,7 +72,7 @@ export function Hero() {
             </motion.h1>
             <motion.p
               variants={textVariants}
-              className="mt-6 w-full text-left text-lg font-light leading-snug tracking-tight text-gray-400 opacity-75 sm:text-2xl lg:mt-8 lg:text-3xl"
+              className="mt-6 w-full text-left text-xl font-light leading-snug tracking-tight text-gray-400 opacity-75 sm:text-2xl lg:mt-8 lg:text-3xl"
             >
               Kanko connects travel agents and suppliers directly, making
               services more accessible, affordable and profitable throughout the
