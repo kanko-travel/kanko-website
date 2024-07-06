@@ -127,14 +127,14 @@ export function Header() {
             {/* <div className="hidden md:block">
               <NavLink href="/login">Sign in</NavLink>
             </div> */}
-            <Button
+            {/* <Button
               onClick={() =>
                 openInNewTab('https://x96t2tdwykm.typeform.com/to/KPzyQfcL')
               }
               color="primary"
             >
               <span>Get in touch</span>
-            </Button>
+            </Button> */}
             {/* <div className="-mr-1 md:hidden">
               <MobileNavigation />
             </div> */}

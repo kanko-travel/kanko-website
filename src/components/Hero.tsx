@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 import { Container } from '@/components/Container'
-// import CountryCycler from './CountryCycler'
 
 import cloudImg from '../images/backgrounds/clouds_3.png'
+import EarlyAccessForm from './EarlyAccessForm'
 
 const textContainerVariants = {
   initial: {},
@@ -53,8 +53,8 @@ export function Hero() {
           />
         </div>
       </div>
-      <Container className="z-10 text-center">
-        <div className="flex w-full">
+      <Container className="z-10">
+        <div className="w-full">
           <motion.div
             variants={textContainerVariants}
             initial="initial"
@@ -64,10 +64,11 @@ export function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="text-kanko-grey sm:leading-tighter lg:leading-tighter w-full text-left font-display text-4xl font-medium tracking-tighter sm:text-6xl lg:text-7xl"
+              className="w-full text-left font-display text-4xl font-medium tracking-tighter text-kanko-grey sm:text-6xl sm:leading-tighter lg:text-7xl lg:leading-tighter"
             >
-              The Marketplace for Travel Agents & Suppliers{' '}
-              <span className="text-kanko-green">Everywhere</span>
+              The Marketplace for Travel Agents & Suppliers
+              {/* {' '}
+              <span className="text-kanko-green">Everywhere</span> */}
               {/* <CountryCycler /> */}
             </motion.h1>
             <motion.p
@@ -78,9 +79,23 @@ export function Hero() {
               services more accessible, affordable and profitable throughout the
               supply chain.
             </motion.p>
+            <EarlyAccessForm>
+              <CTAButton />
+            </EarlyAccessForm>
           </motion.div>
         </div>
       </Container>
     </div>
+  )
+}
+
+function CTAButton() {
+  return (
+    <motion.div
+      variants={textVariants}
+      className="mt-6 inline-flex rounded-full bg-kanko-green px-6 py-2 font-display text-xl tracking-tight text-white sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
+    >
+      Get Early Access
+    </motion.div>
   )
 }
