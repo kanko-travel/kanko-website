@@ -93,7 +93,7 @@ function CTAButton() {
   return (
     <motion.div
       variants={textVariants}
-      className="mt-6 inline-flex rounded-full bg-kanko-green px-6 py-2 font-display text-xl tracking-tight text-white sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
+      className="mt-6 inline-flex rounded-lg border-2 border-kanko-green px-6 py-2 font-display text-xl tracking-tight text-kanko-green sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
     >
       Get Early Access
     </motion.div>
