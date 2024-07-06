@@ -86,7 +86,7 @@ function Field({ name, label, type = 'text', placeholder = '' }) {
   return (
     <div className="text-left">
       <Label htmlFor={name}>{label}</Label>
-      <Input type={type} id={name} placeholder={placeholder} />
+      <Input type={type} name={name} id={name} placeholder={placeholder} />
     </div>
   )
 }
