@@ -55,7 +55,7 @@ export default function EarlyAccessForm({ children }) {
 
 function FormContent() {
   return (
-    <form className="w-full" name="early_access" data-netlify>
+    <form className="w-full" name="early_access" data-netlify="true">
       <div className="flex w-full justify-center py-8">
         <div className="grid w-full grid-cols-2 gap-4">
           <div className="col-span-2 sm:col-span-1">
