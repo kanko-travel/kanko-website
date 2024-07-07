@@ -27,6 +27,7 @@ interface EarlyAccessSubmission {
   last_name: string
   email: string
   company_name: string
+  'cf-turnstile-response': string
 }
 
 export default async function handler(
@@ -45,6 +46,19 @@ export default async function handler(
     res.status(403).json({ message: 'invalid form' })
     return
   }
+
+  let ip = req.headers['CF-Connecting-IP']
+
+  if (!ip || typeof ip !== 'string') {
+    console.error(ip)
+    res.status(403).json({ message: 'No IP received in header' })
+    return
+  }
+
+  let { err: turnstileErr } = validateTurnstileResponse(
+    submission['cf-turnstile-response'],
+    ip,
+  )
 
   let { err: postMessageErr } = await postMessage(submission)
   if (postMessageErr) {
@@ -79,6 +93,7 @@ function parseEarlyAccessSubmission(
     last_name: '',
     email: '',
     company_name: '',
+    'cf-turnstile-response': '',
   }
 
   console.log(Object.keys(output))
@@ -148,6 +163,15 @@ async function postMessage(
     }
   }
 
+  return {
+    ok: null,
+  }
+}
+
+async function validateTurnstileResponse(
+  response: string,
+  ip: string,
+): Promise<Result<null>> {
   return {
     ok: null,
   }

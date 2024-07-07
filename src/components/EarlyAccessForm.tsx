@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -25,7 +24,6 @@ type RenderParameters = {
 
 declare global {
   interface Window {
-    onloadTurnstileCallback(): void
     turnstile: {
       render(container: string | HTMLElement, params: RenderParameters): void
     }
@@ -99,22 +97,13 @@ function FormContent() {
   )
 
   useEffect(() => {
-    window.onloadTurnstileCallback = function () {
-      console.log('turnstile loaded')
-
-      window.turnstile.render('#early_access_form', {
-        sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
-      })
-    }
+    window.turnstile.render('#early_access_form', {
+      sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
+    })
   }, [])
 
   return (
     <div>
-      <Script
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
-        async={true}
-        defer={true}
-      />
       <div className="mb-2">{error && <ErrorAlert />}</div>
       {success ? (
         <SuccessAlert />
@@ -135,11 +124,11 @@ function FormContent() {
                 <Field name="company_name" label="Company Name" type="text" />
               </div>
 
-              <div className="col-span-2 pt-2">
+              <div className="col-span-2 mx-auto pt-8">
                 <div id="early_access_form" className="checkbox" />
               </div>
 
-              <div className="col-span-2 pt-2">
+              <div className="col-span-2">
                 <Button
                   disabled={isSubmitting}
                   type="submit"
