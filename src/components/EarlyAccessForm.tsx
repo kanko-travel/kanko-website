@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -13,8 +14,23 @@ import {
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
-import { Suspense, useCallback, useState } from 'react'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
+
+type RenderParameters = {
+  sitekey: string
+  theme?: 'light' | 'dark'
+  callback?(token: string): void
+}
+
+declare global {
+  interface Window {
+    onloadTurnstileCallback(): void
+    turnstile: {
+      render(container: string | HTMLElement, params: RenderParameters): void
+    }
+  }
+}
 
 export default function EarlyAccessForm({ children }) {
   return (
@@ -82,8 +98,23 @@ function FormContent() {
     [isSubmitting, setIsSubmitting],
   )
 
+  useEffect(() => {
+    window.onloadTurnstileCallback = function () {
+      console.log('turnstile loaded')
+
+      window.turnstile.render('#early_access_form', {
+        sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
+      })
+    }
+  }, [])
+
   return (
     <div>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+        async={true}
+        defer={true}
+      />
       <div className="mb-2">{error && <ErrorAlert />}</div>
       {success ? (
         <SuccessAlert />
@@ -104,13 +135,8 @@ function FormContent() {
                 <Field name="company_name" label="Company Name" type="text" />
               </div>
 
-              <div className="col-span-2">
-                <div
-                  className="cf-turnstile"
-                  data-sitekey={
-                    process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY
-                  }
-                />
+              <div className="col-span-2 pt-2">
+                <div id="early_access_form" className="checkbox" />
               </div>
 
               <div className="col-span-2 pt-2">
