@@ -1,3 +1,4 @@
+import Script from 'next/script'
 // import { CallToAction } from '@/components/CallToAction'
 // import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
@@ -14,6 +15,11 @@ import FeaturesMain from '@/components/FeaturesMain'
 export default function Home() {
   return (
     <>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async={true}
+        defer={true}
+      />
       <Header />
       <main>
         <Hero />

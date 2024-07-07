@@ -104,6 +104,15 @@ function FormContent() {
                 <Field name="company_name" label="Company Name" type="text" />
               </div>
 
+              <div className="col-span-2">
+                <div
+                  className="cf-turnstile"
+                  data-sitekey={
+                    process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY
+                  }
+                />
+              </div>
+
               <div className="col-span-2 pt-2">
                 <Button
                   disabled={isSubmitting}
