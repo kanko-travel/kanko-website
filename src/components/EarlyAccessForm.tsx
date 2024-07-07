@@ -88,7 +88,7 @@ function FormContent() {
       ) : (
         <form
           className="w-full"
-          name="early_access"
+          name="early_access_wrong"
           data-netlify="true"
           onSubmit={handleSubmit}
         >
