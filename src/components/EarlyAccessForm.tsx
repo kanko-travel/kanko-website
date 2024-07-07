@@ -118,6 +118,7 @@ function FormContent() {
               </div>
             </div>
           </div>
+          <input type="hidden" name="early_access" value="register_company" />
         </form>
       )}
     </div>
