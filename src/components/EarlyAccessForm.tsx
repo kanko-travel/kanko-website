@@ -198,10 +198,9 @@ function SuccessAlert() {
   return (
     <Alert variant={'affirmative'}>
       {/* <RocketIcon className="h-4 w-4" /> */}
-      <AlertTitle>We Appreciate Your Interest!</AlertTitle>
+      <AlertTitle>Thanks for your interest!</AlertTitle>
       <AlertDescription>
-        Congratulations, you have successfully joined our early access
-        programme!
+        You have successfully joined our early access programme.
       </AlertDescription>
     </Alert>
   )
@@ -213,7 +212,7 @@ function ErrorAlert() {
       <AlertTitle>Oops, something went wrong.</AlertTitle>
       <AlertDescription>
         We were unable to process your request. Please try submitting the form
-        again. Thank you for your patience!
+        again. Thank you for your patience.
       </AlertDescription>
     </Alert>
   )
