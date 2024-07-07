@@ -88,7 +88,7 @@ function FormContent() {
       ) : (
         <form
           className="w-full"
-          name="early_access_wrong"
+          name="early_access"
           data-netlify="true"
           onSubmit={handleSubmit}
         >
@@ -118,7 +118,7 @@ function FormContent() {
               </div>
             </div>
           </div>
-          <input type="hidden" name="early_access" value="register_company" />
+          <input type="hidden" name="form-name" value="early_access" />
         </form>
       )}
     </div>
