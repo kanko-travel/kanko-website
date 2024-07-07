@@ -109,7 +109,7 @@ function FormContent() {
         <SuccessAlert />
       ) : (
         <form className="w-full" onSubmit={handleSubmit}>
-          <div className="flex w-full justify-center py-8">
+          <div className="flex w-full justify-center pt-8">
             <div className="grid w-full grid-cols-2 gap-4">
               <div className="col-span-2 sm:col-span-1">
                 <Field name="first_name" label="First Name" type="text" />
@@ -124,11 +124,7 @@ function FormContent() {
                 <Field name="company_name" label="Company Name" type="text" />
               </div>
 
-              <div className="col-span-2 mx-auto pt-8">
-                <div id="early_access_form" className="checkbox" />
-              </div>
-
-              <div className="col-span-2">
+              <div className="col-span-2 flex justify-center pt-2">
                 <Button
                   disabled={isSubmitting}
                   type="submit"
@@ -136,6 +132,10 @@ function FormContent() {
                 >
                   {isSubmitting ? <LoadingSpinner /> : 'Submit'}
                 </Button>
+              </div>
+
+              <div className="col-span-2 mx-auto pt-2">
+                <div id="early_access_form" className="checkbox" />
               </div>
             </div>
           </div>
