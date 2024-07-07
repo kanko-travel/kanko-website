@@ -58,7 +58,7 @@ function FormContent() {
       const myForm = event.target
       const formData = new FormData(myForm)
 
-      fetch('/', {
+      fetch('/early_access_form.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
