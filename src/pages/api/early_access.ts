@@ -130,7 +130,7 @@ async function postMessage(
         type: 'header',
         text: {
           type: 'plain_text',
-          text: 'New Signup',
+          text: 'Early Access Signup',
           emoji: true,
         },
       },
@@ -139,11 +139,7 @@ async function postMessage(
         fields: [
           {
             type: 'mrkdwn',
-            text: `*${submission.company_name}*`,
-          },
-          {
-            type: 'plain_text',
-            text: `${submission.company_type}`,
+            text: `*Company:*\n${submission.company_name}\n${submission.company_type}`,
           },
         ],
       },
@@ -152,11 +148,7 @@ async function postMessage(
         fields: [
           {
             type: 'mrkdwn',
-            text: `*Submitted by:*\n${submission.first_name} ${submission.last_name}`,
-          },
-          {
-            type: 'plain_text',
-            text: `${submission.email}`,
+            text: `*Contact:*\n${submission.first_name} ${submission.last_name}\n${submission.email}`,
           },
         ],
       },
