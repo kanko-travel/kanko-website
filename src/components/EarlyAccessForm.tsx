@@ -130,7 +130,7 @@ function FormContent() {
                 <RadioGroupField
                   name="company_type"
                   label="Company Type"
-                  values={['Hotel', 'Travel Agent']}
+                  values={['Hotel', 'Travel Agent', 'Other']}
                   defaultValue={'Hotel'}
                 />
               </div>
