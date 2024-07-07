@@ -58,7 +58,7 @@ function FormContent() {
       const myForm = event.target
       const formData = new FormData(myForm)
 
-      fetch('/', {
+      fetch('/api/early_access', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
@@ -66,8 +66,10 @@ function FormContent() {
         .then((res) => {
           if (res.status == 200) {
             setSuccess(true)
+            setError(false)
           } else {
             setError(true)
+            setSuccess(false)
           }
         })
         .catch((_) => {
@@ -86,12 +88,7 @@ function FormContent() {
       {success ? (
         <SuccessAlert />
       ) : (
-        <form
-          className="w-full"
-          name="early_access"
-          data-netlify="true"
-          onSubmit={handleSubmit}
-        >
+        <form className="w-full" onSubmit={handleSubmit}>
           <div className="flex w-full justify-center py-8">
             <div className="grid w-full grid-cols-2 gap-4">
               <div className="col-span-2 sm:col-span-1">
@@ -118,7 +115,6 @@ function FormContent() {
               </div>
             </div>
           </div>
-          <input type="hidden" name="form-name" value="early_access" />
         </form>
       )}
     </div>
