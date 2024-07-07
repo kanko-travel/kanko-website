@@ -161,7 +161,7 @@ interface TabContent {
 
 function Tabs({ tabs }: { tabs: TabProps[] }) {
   const searchParams = useSearchParams()
-  const audience = searchParams.get('audience')
+  const audience = searchParams?.get('audience')
 
   const defaultIndex = audience
     ? Math.min(parseInt(audience), tabs.length - 1)
@@ -212,9 +212,9 @@ function Tabs({ tabs }: { tabs: TabProps[] }) {
         viewport={{ once: true, amount: 0.4 }}
         className="mx-auto mb-6 w-full sm:mb-8"
       >
-        <h2 className="text-kanko-grey text-center font-display text-2xl sm:text-4xl">
+        <h2 className="text-center font-display text-2xl text-kanko-grey sm:text-4xl">
           <span>A Solution Tailored to You</span>
-          <span className="text-kanko-green ml-2 text-3xl sm:text-5xl">.</span>
+          <span className="ml-2 text-3xl text-kanko-green sm:text-5xl">.</span>
         </h2>
       </motion.div>
       <motion.div
@@ -333,7 +333,7 @@ function ElevatorPitch({ title, description, features }) {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.4 }}
-            className="text-kanko-grey w-full font-display text-2xl tracking-tight sm:text-4xl sm:leading-tight"
+            className="w-full font-display text-2xl tracking-tight text-kanko-grey sm:text-4xl sm:leading-tight"
           >
             {description}
           </motion.p>
