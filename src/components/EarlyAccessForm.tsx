@@ -153,7 +153,7 @@ function Field({
   required = true,
 }) {
   return (
-    <div className="text-left">
+    <div className="space-y-1 text-left">
       <Label htmlFor={name}>{label}</Label>
       <Input
         type={type}
