@@ -63,8 +63,12 @@ function FormContent() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
       })
-        .then(() => {
-          setSuccess(true)
+        .then((res) => {
+          if (res.status == 200) {
+            setSuccess(true)
+          } else {
+            setError(true)
+          }
         })
         .catch((_) => {
           setError(true)
