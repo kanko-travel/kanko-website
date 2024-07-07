@@ -55,10 +55,14 @@ export default async function handler(
     return
   }
 
-  let { err: turnstileErr } = validateTurnstileResponse(
+  let { err: turnstileErr } = await validateTurnstileResponse(
     submission['cf-turnstile-response'],
     ip,
   )
+
+  if (turnstileErr) {
+    res.status(403).json({ message: 'Cloudflare Turnstile validation failed' })
+  }
 
   let { err: postMessageErr } = await postMessage(submission)
   if (postMessageErr) {
@@ -172,7 +176,26 @@ async function validateTurnstileResponse(
   response: string,
   ip: string,
 ): Promise<Result<null>> {
+  let formData = new FormData()
+  formData.append('secret', process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY || '')
+  formData.append('response', response)
+  formData.append('remoteip', ip)
+
+  const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+  const result = await fetch(url, {
+    body: formData,
+    method: 'POST',
+  })
+
+  const outcome: { success: boolean } = await result.json()
+
+  if (outcome.success) {
+    return {
+      ok: null,
+    }
+  }
+
   return {
-    ok: null,
+    err: new Error('cloudflare turnstile response validation failed'),
   }
 }
