@@ -62,6 +62,7 @@ export default async function handler(
 
   if (turnstileErr) {
     res.status(403).json({ message: 'Cloudflare Turnstile validation failed' })
+    return
   }
 
   let { err: postMessageErr } = await postMessage(submission)
