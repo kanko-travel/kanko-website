@@ -64,7 +64,7 @@ export function Hero() {
           >
             <motion.h1
               variants={textVariants}
-              className="w-full text-left font-display text-4xl font-medium tracking-tighter text-kanko-grey sm:text-6xl sm:leading-tighter lg:text-7xl lg:leading-tighter"
+              className="sm:leading-tighter lg:leading-tighter w-full text-left font-display text-4xl font-medium tracking-tighter text-kanko-grey sm:text-6xl lg:text-7xl"
             >
               The Marketplace for Travel Agents & Suppliers
               {/* {' '}
@@ -89,11 +89,23 @@ export function Hero() {
   )
 }
 
+const buttonVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+    },
+  },
+}
+
 function CTAButton() {
   return (
     <motion.div
-      variants={textVariants}
-      className="mt-6 inline-flex rounded-lg border-2 border-kanko-green px-6 py-2 font-display text-xl tracking-tight text-kanko-green sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
+      variants={buttonVariants}
+      className="mt-6 inline-flex rounded-sm bg-kanko-green px-6 py-2 font-display text-xl tracking-tight text-white sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
     >
       Get Early Access
     </motion.div>

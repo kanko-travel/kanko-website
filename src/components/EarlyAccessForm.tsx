@@ -3,15 +3,6 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
-
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -19,6 +10,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+
+import { Suspense, useCallback, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 export default function EarlyAccessForm({ children }) {
   return (
@@ -29,69 +25,162 @@ export default function EarlyAccessForm({ children }) {
           <DialogHeader>
             <DialogTitle>Sign up for early access</DialogTitle>
             <DialogDescription>
-              By signing up for early access you will receive the latest product
-              updates before everyone else.
+              By signing up for early access you get exclusive access to our
+              features before everyone else.
             </DialogDescription>
           </DialogHeader>
-          <FormContent />
+          <Suspense>
+            <FormContent />
+          </Suspense>
         </DialogContent>
       </Dialog>
-      {/* <Sheet>
-        <SheetTrigger>{children}</SheetTrigger>
-        <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Sign up for early access</SheetTitle>
-            <SheetDescription>
-              By signing up for early access you will receive the latest product
-              updates before everyone else.
-            </SheetDescription>
-            <FormContent />
-          </SheetHeader>
-        </SheetContent>
-      </Sheet> */}
     </div>
   )
 }
 
 function FormContent() {
-  return (
-    <form
-      className="w-full"
-      name="early_access"
-      data-netlify="true"
-      method="POST"
-    >
-      <div className="flex w-full justify-center py-8">
-        <div className="grid w-full grid-cols-2 gap-4">
-          <div className="col-span-2 sm:col-span-1">
-            <Field name="first_name" label="First Name" type="text" />
-          </div>
-          <div className="col-span-2 sm:col-span-1">
-            <Field name="last_name" label="Last Name" type="text" />
-          </div>
-          <div className="col-span-2">
-            <Field name="email" label="Email" type="email" />
-          </div>
-          <div className="col-span-2">
-            <Field name="company_name" label="Company Name" type="text" />
-          </div>
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
 
-          <div className="col-span-2 pt-2">
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault()
+
+      if (isSubmitting) {
+        return
+      }
+
+      setIsSubmitting(true)
+
+      console.log('submitting form')
+
+      const myForm = event.target
+      const formData = new FormData(myForm)
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      })
+        .then(() => {
+          setSuccess(true)
+        })
+        .catch((_) => {
+          setError(true)
+        })
+        .finally(() => {
+          setIsSubmitting(false)
+        })
+    },
+    [isSubmitting, setIsSubmitting],
+  )
+
+  return (
+    <div>
+      <div className="mb-2">{error && <ErrorAlert />}</div>
+      {success ? (
+        <SuccessAlert />
+      ) : (
+        <form
+          className="w-full"
+          name="early_access"
+          data-netlify="true"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex w-full justify-center py-8">
+            <div className="grid w-full grid-cols-2 gap-4">
+              <div className="col-span-2 sm:col-span-1">
+                <Field name="first_name" label="First Name" type="text" />
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <Field name="last_name" label="Last Name" type="text" />
+              </div>
+              <div className="col-span-2">
+                <Field name="email" label="Email" type="email" />
+              </div>
+              <div className="col-span-2">
+                <Field name="company_name" label="Company Name" type="text" />
+              </div>
+
+              <div className="col-span-2 pt-2">
+                <Button
+                  disabled={isSubmitting}
+                  type="submit"
+                  className="w-full"
+                >
+                  {isSubmitting ? <LoadingSpinner /> : 'Submit'}
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </form>
+        </form>
+      )}
+    </div>
   )
 }
 
-function Field({ name, label, type = 'text', placeholder = '' }) {
+function Field({
+  name,
+  label,
+  type = 'text',
+  placeholder = '',
+  required = true,
+}) {
   return (
     <div className="text-left">
       <Label htmlFor={name}>{label}</Label>
-      <Input type={type} name={name} id={name} placeholder={placeholder} />
+      <Input
+        type={type}
+        name={name}
+        id={name}
+        placeholder={placeholder}
+        required={required}
+      />
     </div>
+  )
+}
+
+function SuccessAlert() {
+  return (
+    <Alert variant={'affirmative'}>
+      {/* <RocketIcon className="h-4 w-4" /> */}
+      <AlertTitle>We Appreciate Your Interest!</AlertTitle>
+      <AlertDescription>
+        Congratulations, you have successfully joined our early access
+        programme!
+      </AlertDescription>
+    </Alert>
+  )
+}
+
+function ErrorAlert() {
+  return (
+    <Alert variant={'destructive'}>
+      <AlertTitle>Oops, something went wrong.</AlertTitle>
+      <AlertDescription>
+        We were unable to process your request. Please try submitting the form
+        again. Thank you for your patience!
+      </AlertDescription>
+    </Alert>
+  )
+}
+
+const LoadingSpinner = ({ className }: { className?: string }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn('animate-spin', className)}
+    >
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
   )
 }
