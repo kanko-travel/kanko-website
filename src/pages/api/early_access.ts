@@ -47,7 +47,7 @@ export default async function handler(
     return
   }
 
-  let ip = req.headers['CF-Connecting-IP']
+  let ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for']
 
   if (!ip || typeof ip !== 'string') {
     console.error(ip)
