@@ -27,6 +27,7 @@ interface EarlyAccessSubmission {
   last_name: string
   email: string
   company_name: string
+  company_type: string
   'cf-turnstile-response': string
 }
 
@@ -98,6 +99,7 @@ function parseEarlyAccessSubmission(
     last_name: '',
     email: '',
     company_name: '',
+    company_type: '',
     'cf-turnstile-response': '',
   }
 
@@ -136,8 +138,12 @@ async function postMessage(
         type: 'section',
         fields: [
           {
+            type: 'mrkdwn',
+            text: `*${submission.company_name}*`,
+          },
+          {
             type: 'plain_text',
-            text: `${submission.company_name}`,
+            text: `${submission.company_type}`,
           },
         ],
       },

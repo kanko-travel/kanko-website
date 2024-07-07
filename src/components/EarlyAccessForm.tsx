@@ -2,6 +2,8 @@ import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+
 import {
   Dialog,
   DialogContent,
@@ -124,8 +126,18 @@ function FormContent() {
                 <Field name="company_name" label="Company Name" type="text" />
               </div>
 
+              <div className="col-span-2">
+                <RadioGroupField
+                  name="company_type"
+                  label="Company Type"
+                  values={['Hotel', 'Travel Agent']}
+                  defaultValue={'Hotel'}
+                />
+              </div>
+
               <div className="col-span-2 flex justify-center pt-2">
                 <Button
+                  variant={'affirmative'}
                   disabled={isSubmitting}
                   type="submit"
                   className="w-full"
@@ -162,6 +174,22 @@ function Field({
         placeholder={placeholder}
         required={required}
       />
+    </div>
+  )
+}
+
+function RadioGroupField({ name, label, values, defaultValue }) {
+  return (
+    <div className="space-y-2 text-left">
+      <Label htmlFor={name}>{label}</Label>
+      <RadioGroup name={name} defaultValue={defaultValue}>
+        {values.map((v) => (
+          <div key={v} className="flex items-center space-x-2">
+            <RadioGroupItem value={v} id="option-one" />
+            <Label htmlFor="option-one">{v}</Label>
+          </div>
+        ))}
+      </RadioGroup>
     </div>
   )
 }

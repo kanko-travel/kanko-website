@@ -79,9 +79,11 @@ export function Hero() {
               services more accessible, affordable and profitable throughout the
               supply chain.
             </motion.p>
-            <EarlyAccessForm>
-              <CTAButton />
-            </EarlyAccessForm>
+            <div className="mt-6 sm:mt-8 lg:mt-12">
+              <EarlyAccessForm>
+                <CTAButton />
+              </EarlyAccessForm>
+            </div>
           </motion.div>
         </div>
       </Container>
@@ -105,7 +107,7 @@ function CTAButton() {
   return (
     <motion.div
       variants={buttonVariants}
-      className="mt-6 inline-flex rounded-sm bg-kanko-green px-6 py-2 font-display text-xl tracking-tight text-white sm:mt-8 sm:px-8 sm:py-3 sm:text-2xl lg:mt-12 lg:px-9 lg:text-3xl"
+      className="inline-flex rounded-sm bg-kanko-green px-6 py-2 font-display text-xl tracking-tight text-white  sm:px-8 sm:py-3 sm:text-2xl lg:px-9 lg:text-3xl"
     >
       Get Early Access
     </motion.div>
