@@ -17,6 +17,8 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 import { Suspense, useCallback, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { Checkbox } from './ui/checkbox'
+import { ScrollArea } from './ui/scroll-area'
 
 type RenderParameters = {
   sitekey: string
@@ -31,6 +33,29 @@ declare global {
     }
   }
 }
+
+const hotelFeatures = [
+  'Making more connections',
+  'Enabling real-time inventory and booking',
+  'Selling add-on services',
+  'Easily managing contracts',
+]
+const agencyFeatures = [
+  'Finding the best deals for my clients',
+  'Discovering new properties and services',
+  'Working better with properties I already work with',
+  'Viewing real-time inventory and rates',
+  'Making bookings in real-time',
+  'Easily managing contracts',
+]
+
+const sources = [
+  'Referred by someone',
+  'Google or search engine',
+  'LinkedIn',
+  'Travel expo',
+  'Other',
+]
 
 export default function EarlyAccessForm({ children }) {
   return (
@@ -58,6 +83,9 @@ function FormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
+
+  const [businessType, setBusinessType] = useState('Hotel')
+  const [source, setSource] = useState('')
 
   const handleSubmit = useCallback(
     (event) => {
@@ -98,6 +126,20 @@ function FormContent() {
     [isSubmitting, setIsSubmitting],
   )
 
+  const handleChangeBusinessType = useCallback(
+    (e) => {
+      setBusinessType(e.target.value)
+    },
+    [setBusinessType],
+  )
+
+  const handleChangeSource = useCallback(
+    (e) => {
+      setSource(e.target.value)
+    },
+    [setSource],
+  )
+
   useEffect(() => {
     window.turnstile.render('#early_access_form', {
       sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
@@ -105,14 +147,14 @@ function FormContent() {
   }, [])
 
   return (
-    <div>
+    <ScrollArea className="max-h-[500px]">
       <div className="mb-2">{error && <ErrorAlert />}</div>
       {success ? (
         <SuccessAlert />
       ) : (
-        <form className="w-full" onSubmit={handleSubmit}>
+        <form className="w-full px-1" onSubmit={handleSubmit}>
           <div className="flex w-full justify-center pt-8">
-            <div className="grid w-full grid-cols-2 gap-4">
+            <div className="grid w-full grid-cols-2 gap-5">
               <div className="col-span-2 sm:col-span-1">
                 <Field name="first_name" label="First Name" type="text" />
               </div>
@@ -132,8 +174,46 @@ function FormContent() {
                   label="Company Type"
                   values={['Hotel', 'Travel Agent', 'Other']}
                   defaultValue={'Hotel'}
+                  onChange={handleChangeBusinessType}
                 />
               </div>
+
+              {(businessType == 'Hotel' || businessType == 'Travel Agent') && (
+                <div className="col-span-2">
+                  <Label>
+                    Which of these features are most important to you?
+                  </Label>
+                  <div className="mt-2 flex flex-col gap-2">
+                    {businessType == 'Hotel'
+                      ? hotelFeatures.map((f) => (
+                          <CheckboxItem key={f} value={f} />
+                        ))
+                      : agencyFeatures.map((f) => (
+                          <CheckboxItem key={f} value={f} />
+                        ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="col-span-2">
+                <RadioGroupField
+                  name="source"
+                  label="Where did you hear about us?"
+                  values={sources}
+                  defaultValue={'Hotel'}
+                  onChange={handleChangeSource}
+                />
+              </div>
+
+              {source == 'Other' && (
+                <div className="col-span-2">
+                  <Field
+                    name="other_source"
+                    label="Please specify"
+                    type="text"
+                  />
+                </div>
+              )}
 
               <div className="col-span-2 flex justify-center pt-2">
                 <Button
@@ -153,7 +233,7 @@ function FormContent() {
           </div>
         </form>
       )}
-    </div>
+    </ScrollArea>
   )
 }
 
@@ -178,18 +258,29 @@ function Field({
   )
 }
 
-function RadioGroupField({ name, label, values, defaultValue }) {
+function RadioGroupField({ name, label, values, defaultValue, onChange }) {
   return (
     <div className="space-y-2 text-left">
       <Label htmlFor={name}>{label}</Label>
-      <RadioGroup name={name} defaultValue={defaultValue}>
+      <RadioGroup name={name} defaultValue={defaultValue} onChange={onChange}>
         {values.map((v) => (
           <div key={v} className="flex items-center space-x-2">
-            <RadioGroupItem value={v} id="option-one" />
-            <Label htmlFor="option-one">{v}</Label>
+            <RadioGroupItem value={v} />
+            <Label className="font-normal">{v}</Label>
           </div>
         ))}
       </RadioGroup>
+    </div>
+  )
+}
+
+function CheckboxItem({ value }) {
+  return (
+    <div className="flex items-center space-x-2">
+      <Checkbox name={value} />
+      <label className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+        {value}
+      </label>
     </div>
   )
 }
