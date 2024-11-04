@@ -66,7 +66,7 @@ export function Hero() {
               variants={textVariants}
               className="sm:leading-tighter lg:leading-tighter w-full text-left font-display text-4xl font-medium tracking-tighter text-kanko-grey sm:text-6xl lg:text-7xl"
             >
-              The Marketplace for Travel Agents & Suppliers
+              Making B2B Easy for Hotels and Travel Agents
               {/* {' '}
               <span className="text-kanko-green">Everywhere</span> */}
               {/* <CountryCycler /> */}
@@ -75,9 +75,8 @@ export function Hero() {
               variants={textVariants}
               className="mt-6 w-full text-left text-xl font-light leading-snug tracking-tight text-gray-400 opacity-75 sm:mt-8 sm:text-2xl lg:mt-12 lg:text-3xl"
             >
-              Kanko connects travel agents and suppliers directly, making
-              services more accessible, affordable and profitable throughout the
-              supply chain.
+              Kanko connects hotels and travel agents directly for faster,
+              reliable and more profitable bookings
             </motion.p>
             <div className="mt-6 sm:mt-8 lg:mt-12">
               <EarlyAccessForm>
