@@ -28,6 +28,18 @@ interface EarlyAccessSubmission {
   email: string
   company_name: string
   company_type: string
+  source: string
+  other_source?: string
+  h0?: string
+  h1?: string
+  h2?: string
+  h3?: string
+  a0?: string
+  a1?: string
+  a2?: string
+  a3?: string
+  a4?: string
+  a5?: string
   'cf-turnstile-response': string
 }
 
@@ -100,6 +112,7 @@ function parseEarlyAccessSubmission(
     email: '',
     company_name: '',
     company_type: '',
+    source: '',
     'cf-turnstile-response': '',
   }
 
@@ -111,6 +124,24 @@ function parseEarlyAccessSubmission(
     }
 
     output[field] = fields[field][0]
+  }
+
+  for (let optional of [
+    'other_source',
+    'h0',
+    'h1',
+    'h2',
+    'h3',
+    'a0',
+    'a1',
+    'a2',
+    'a3',
+    'a4',
+    'a5',
+  ]) {
+    if (fields[optional] && fields[optional].length >= 0) {
+      output[optional] = fields[optional][0]
+    }
   }
 
   return { ok: output }
@@ -149,6 +180,15 @@ async function postMessage(
           {
             type: 'mrkdwn',
             text: `*Contact:*\n${submission.first_name} ${submission.last_name}\n${submission.email}`,
+          },
+        ],
+      },
+      {
+        type: 'section',
+        fields: [
+          {
+            type: 'mrkdwn',
+            text: '```json\n' + JSON.stringify(submission, null, 2) + '\n```',
           },
         ],
       },

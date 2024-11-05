@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
@@ -19,6 +21,7 @@ import { Suspense, useCallback, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 import { Checkbox } from './ui/checkbox'
 import { ScrollArea } from './ui/scroll-area'
+import { useSearchParams } from 'next/navigation'
 
 type RenderParameters = {
   sitekey: string
@@ -35,18 +38,48 @@ declare global {
 }
 
 const hotelFeatures = [
-  'Making more connections',
-  'Enabling real-time inventory and booking',
-  'Selling add-on services',
-  'Easily managing contracts',
+  {
+    value: 'h0',
+    label: 'Making more connections',
+  },
+  {
+    value: 'h1',
+    label: 'Enabling real-time inventory and booking',
+  },
+  {
+    value: 'h2',
+    label: 'Selling add-on services',
+  },
+  {
+    value: 'h3',
+    label: 'Easily managing contracts',
+  },
 ]
 const agencyFeatures = [
-  'Finding the best deals for my clients',
-  'Discovering new properties and services',
-  'Working better with properties I already work with',
-  'Viewing real-time inventory and rates',
-  'Making bookings in real-time',
-  'Easily managing contracts',
+  {
+    value: 'a0',
+    label: 'Finding the best deals for my clients',
+  },
+  {
+    value: 'a1',
+    label: 'Discovering new properties and services',
+  },
+  {
+    value: 'a2',
+    label: 'Working better with properties I already work with',
+  },
+  {
+    value: 'a3',
+    label: 'Viewing real-time inventory and rates',
+  },
+  {
+    value: 'a4',
+    label: 'Making bookings in real-time',
+  },
+  {
+    value: 'a5',
+    label: 'Easily managing contracts',
+  },
 ]
 
 const sources = [
@@ -57,7 +90,7 @@ const sources = [
   'Other',
 ]
 
-export default function EarlyAccessForm({ children }) {
+export function EarlyAccessFormDialog({ children }) {
   return (
     <div>
       <Dialog>
@@ -71,7 +104,11 @@ export default function EarlyAccessForm({ children }) {
             </DialogDescription>
           </DialogHeader>
           <Suspense>
-            <FormContent />
+            <ScrollArea className="max-h-[500px]">
+              <div className="px-1 pt-8">
+                <EarlyAccessForm />
+              </div>
+            </ScrollArea>
           </Suspense>
         </DialogContent>
       </Dialog>
@@ -79,12 +116,17 @@ export default function EarlyAccessForm({ children }) {
   )
 }
 
-function FormContent() {
+export default function EarlyAccessForm() {
+  const searchParams = useSearchParams()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
-  const [businessType, setBusinessType] = useState('Hotel')
+  let role = searchParams?.get('role')
+  role =
+    role === 'property' ? 'Hotel' : role === 'agency' ? 'Travel Agent' : 'Hotel'
+
+  const [businessType, setBusinessType] = useState(role)
   const [source, setSource] = useState('')
 
   const handleSubmit = useCallback(
@@ -147,13 +189,19 @@ function FormContent() {
   }, [])
 
   return (
-    <ScrollArea className="max-h-[500px]">
-      <div className="mb-2">{error && <ErrorAlert />}</div>
+    <div>
+      <>
+        {error && (
+          <div className="mb-2">
+            <ErrorAlert />
+          </div>
+        )}
+      </>
       {success ? (
         <SuccessAlert />
       ) : (
-        <form className="w-full px-1" onSubmit={handleSubmit}>
-          <div className="flex w-full justify-center pt-8">
+        <form className="w-full" onSubmit={handleSubmit}>
+          <div className="flex w-full justify-center">
             <div className="grid w-full grid-cols-2 gap-5">
               <div className="col-span-2 sm:col-span-1">
                 <Field name="first_name" label="First Name" type="text" />
@@ -173,7 +221,7 @@ function FormContent() {
                   name="company_type"
                   label="Company Type"
                   values={['Hotel', 'Travel Agent', 'Other']}
-                  defaultValue={'Hotel'}
+                  defaultValue={role}
                   onChange={handleChangeBusinessType}
                 />
               </div>
@@ -186,10 +234,18 @@ function FormContent() {
                   <div className="mt-2 flex flex-col gap-2">
                     {businessType == 'Hotel'
                       ? hotelFeatures.map((f) => (
-                          <CheckboxItem key={f} value={f} />
+                          <CheckboxItem
+                            key={f.value}
+                            value={f.value}
+                            label={f.label}
+                          />
                         ))
                       : agencyFeatures.map((f) => (
-                          <CheckboxItem key={f} value={f} />
+                          <CheckboxItem
+                            key={f.value}
+                            value={f.value}
+                            label={f.label}
+                          />
                         ))}
                   </div>
                 </div>
@@ -233,7 +289,7 @@ function FormContent() {
           </div>
         </form>
       )}
-    </ScrollArea>
+    </div>
   )
 }
 
@@ -274,12 +330,12 @@ function RadioGroupField({ name, label, values, defaultValue, onChange }) {
   )
 }
 
-function CheckboxItem({ value }) {
+function CheckboxItem({ value, label }) {
   return (
     <div className="flex items-center space-x-2">
       <Checkbox name={value} />
       <label className="text-sm font-normal leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-        {value}
+        {label}
       </label>
     </div>
   )
