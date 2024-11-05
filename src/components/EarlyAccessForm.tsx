@@ -22,6 +22,7 @@ import { cn } from '@/lib/utils'
 import { Checkbox } from './ui/checkbox'
 import { ScrollArea } from './ui/scroll-area'
 import { useSearchParams } from 'next/navigation'
+import Script from 'next/script'
 
 type RenderParameters = {
   sitekey: string
@@ -183,13 +184,29 @@ export default function EarlyAccessForm() {
   )
 
   useEffect(() => {
-    window.turnstile.render('#early_access_form', {
-      sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
-    })
+    const intervalId = setInterval(() => {
+      if (!window.turnstile) {
+        return
+      }
+
+      clearInterval(intervalId)
+      window.turnstile.render('#early_access_form', {
+        sitekey: process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY || '',
+      })
+    }, 100)
+
+    return () => {
+      clearInterval(intervalId)
+    }
   }, [])
 
   return (
     <div>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+        async={true}
+        defer={true}
+      />
       <>
         {error && (
           <div className="mb-2">
