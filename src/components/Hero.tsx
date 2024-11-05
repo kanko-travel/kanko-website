@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/Container'
 
 import cloudImg from '../images/backgrounds/clouds_3.png'
-import EarlyAccessForm from './EarlyAccessForm'
+import { EarlyAccessFormDialog } from './EarlyAccessForm'
 
 const textContainerVariants = {
   initial: {},
@@ -79,9 +79,9 @@ export function Hero() {
               reliable and more profitable bookings
             </motion.p>
             <div className="mt-6 sm:mt-8 lg:mt-12">
-              <EarlyAccessForm>
+              <EarlyAccessFormDialog>
                 <CTAButton />
-              </EarlyAccessForm>
+              </EarlyAccessFormDialog>
             </div>
           </motion.div>
         </div>
